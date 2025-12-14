@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 # from mem0 import MemoryClient
 from memos.api.client import MemOSClient
+from src.preprocess import ConversationPreprocessor
 
 load_dotenv()
 
@@ -48,6 +49,7 @@ class MemoryADD:
         self.client = MemOSClient(
             api_key=os.getenv("MEMOS_API_KEY")
         )
+        self.preprocessor = ConversationPreprocessor()
 
         # self.mem0_client.update_project(custom_instructions=custom_instructions)
         self.batch_size = batch_size
@@ -78,10 +80,17 @@ class MemoryADD:
                 else:
                     raise e
 
-    def add_memories_for_speaker(self, speaker, messages, timestamp, desc):
+    def add_memories_for_speaker(self, speaker_user_id, speaker_name, messages, timestamp, desc):
+        messages = messages[:2]
         for i in tqdm(range(0, len(messages), self.batch_size), desc=desc):
             batch_messages = messages[i : i + self.batch_size]
-            self.add_memory(speaker, batch_messages, metadata={"timestamp": timestamp})
+            preprocessed_batch = self.preprocessor.preprocess_messages(
+                batch_messages,
+                speaker_display_name=speaker_name,
+                conversation_timestamp=timestamp,
+            )
+            final_batch = preprocessed_batch or batch_messages
+            self.add_memory(speaker_user_id, final_batch, metadata={"timestamp": timestamp})
 
     def process_conversation(self, item, idx):
         conversation = item["conversation"]
@@ -118,11 +127,23 @@ class MemoryADD:
             # add memories for the two users on different threads
             thread_a = threading.Thread(
                 target=self.add_memories_for_speaker,
-                args=(speaker_a_user_id, messages, timestamp, "Adding Memories for Speaker A"),
+                args=(
+                    speaker_a_user_id,
+                    speaker_a,
+                    messages,
+                    timestamp,
+                    "Adding Memories for Speaker A",
+                ),
             )
             thread_b = threading.Thread(
                 target=self.add_memories_for_speaker,
-                args=(speaker_b_user_id, messages_reverse, timestamp, "Adding Memories for Speaker B"),
+                args=(
+                    speaker_b_user_id,
+                    speaker_b,
+                    messages_reverse,
+                    timestamp,
+                    "Adding Memories for Speaker B",
+                ),
             )
 
             thread_a.start()
