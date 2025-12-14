@@ -8,3 +8,26 @@
 配置:在.env当中需要填入两个memos的api——key，你需要创建两个项目来分别存储
 
 ![alt text](img/image2.png)
+
+使用方法:
+(如果要使用我的API KEY，就不要再添加了)
+添加原始对话
+
+```
+cd src
+python -m modules.addConversation
+```
+
+添加处理过后的记忆
+
+```
+cd src 
+python main.py --step add
+```
+
+进行回答
+
+```
+cd src 
+python main.py --step search
+```
