@@ -30,6 +30,22 @@ class LocomoAgent:
             return response.choices[0].message.content.strip()
         except:
             return question
+    
+    def _route_targets(self, question, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name):
+        """
+        Route a question to the most relevant speaker memory.
+        - If the question mentions exactly one speaker name, route to that speaker.
+        - If it mentions both or neither, retrieve memories for both speakers.
+        """
+        q = str(question).lower()
+        a = str(spk_a_name).lower() in q
+        b = str(spk_b_name).lower() in q
+
+        if a and not b:
+            return [(speaker_a_id, spk_a_name)]
+        if b and not a:
+            return [(speaker_b_id, spk_b_name)]
+        return [(speaker_a_id, spk_a_name), (speaker_b_id, spk_b_name)]
 
     def _parse_search_response(self, res, source_type):
         memories = []
@@ -100,16 +116,32 @@ class LocomoAgent:
         
         return "\n".join([t["text"] for t in timeline])
 
-    def answer_question(self, user_id, user_name, question, full_history_text):
-        # 1. 重写问题
-        rewritten_q = self.rewrite_query(question, user_name)
-        
-        # 2. 检索 (获取两组记忆)
-        mems_origin, mems_process = self.search_memories(user_id, rewritten_q)
-        
+    def answer_question(self, targets, question, full_history_text):
+        """
+        Answer a question using routed speaker memories.
+        targets: List of (user_id, user_name)
+        """
+        # 1. 重写问题（仅在单目标时做指代消解，避免多目标时歧义）
+        if len(targets) == 1:
+            rewritten_q = self.rewrite_query(question, targets[0][1])
+        else:
+            rewritten_q = question
+
+        # 2. 检索 (对每个目标分别检索两组记忆)
+        mems_origin_all = []
+        mems_process_all = []
+        for user_id, user_name in targets:
+            mems_origin, mems_process = self.search_memories(user_id, rewritten_q)
+            for m in mems_origin:
+                m["speaker"] = user_name
+            for m in mems_process:
+                m["speaker"] = user_name
+            mems_origin_all.extend(mems_origin)
+            mems_process_all.extend(mems_process)
+
         # 3. 格式化检索结果字符串
-        origin_str = "\n".join([f"[{m['timestamp']}] {m['content']}" for m in mems_origin])
-        process_str = "\n".join([f"[{m['timestamp']}] {m['content']}" for m in mems_process])
+        origin_str = "\n".join([f"[{m.get('speaker','')}|{m['timestamp']}] {m['content']}" for m in mems_origin_all])
+        process_str = "\n".join([f"[{m.get('speaker','')}|{m['timestamp']}] {m['content']}" for m in mems_process_all])
         
         # 4. 组装 Super Prompt
         prompt = ANSWER_PROMPT.format(
@@ -132,15 +164,17 @@ class LocomoAgent:
         final_answer = response.choices[0].message.content.strip()
         
         # 合并记忆用于 evidence 展示
-        all_mems = mems_origin + mems_process
+        all_mems = mems_origin_all + mems_process_all
         
         return final_answer, all_mems, duration
 
     def process_one_qa(self, qa_item, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name, full_conversation_text):
         question = qa_item["question"]
         
+        targets = self._route_targets(question, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name)
+
         # 这里传入了 full_conversation_text
-        ans_a, mems_a, _ = self.answer_question(speaker_a_id, spk_a_name, question, full_conversation_text)
+        ans_a, mems_a, _ = self.answer_question(targets, question, full_conversation_text)
         
         return {
             "question": question,
