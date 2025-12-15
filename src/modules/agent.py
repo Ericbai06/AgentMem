@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -49,6 +50,42 @@ class LocomoAgent:
         if b and not a:
             return [(speaker_b_id, spk_b_name)]
         return [(speaker_a_id, spk_a_name), (speaker_b_id, spk_b_name)]
+
+    def _postprocess_answer(self, text, speaker_names=()):
+        """
+        Deterministic cleanup to make answers evaluation-friendly:
+        - single line
+        - strip prefixes/markdown/bullets
+        - remove bracket punctuation that breaks simple tokenization
+        - drop leading "<Speaker> is/has ..." when present
+        """
+        if text is None:
+            return ""
+
+        s = str(text).strip()
+        lines = [ln.strip() for ln in s.splitlines() if ln.strip()]
+        if lines:
+            s = lines[0]
+
+        s = re.sub(r"^(answer|output)\s*:\s*", "", s, flags=re.IGNORECASE)
+        s = re.sub(r"^[-*]\s+", "", s)
+        s = s.replace("**", "").replace("__", "").replace("`", "")
+        s = s.strip().strip('"').strip("'").strip()
+
+        for name in speaker_names or []:
+            if not name:
+                continue
+            pat = re.compile(rf"^{re.escape(str(name))}\s+(is|was|has|had)\s+", flags=re.IGNORECASE)
+            if pat.search(s):
+                s = pat.sub("", s).strip()
+                break
+
+        s = re.sub(r"^(a|an|the)\s+", "", s, flags=re.IGNORECASE)
+        s = re.sub(r"[\(\)\[\]\{\}]", " ", s)
+        s = s.replace(":", " ").replace(";", " ")
+        s = re.sub(r"[.?!]+$", "", s)
+        s = re.sub(r"\s+", " ", s).strip()
+        return s
 
     def _parse_search_response(self, res, source_type):
         memories = []
@@ -167,6 +204,7 @@ class LocomoAgent:
         duration = time.time() - start_t
         
         final_answer = response.choices[0].message.content.strip()
+        final_answer = self._postprocess_answer(final_answer, speaker_names=[name for _, name in targets])
         
         # 合并记忆用于 evidence 展示
         all_mems = mems_origin_all + mems_process_all
