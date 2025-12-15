@@ -14,15 +14,42 @@ import statistics
 from collections import defaultdict
 from typing import Dict, List, Union
 
-import nltk
-from bert_score import score as bert_score
-from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu
-from nltk.translate.meteor_score import meteor_score
-from rouge_score import rouge_scorer
-from sentence_transformers import SentenceTransformer
+try:
+    import nltk  # type: ignore
+except Exception:
+    nltk = None
+
+try:
+    from bert_score import score as bert_score  # type: ignore
+except Exception:
+    bert_score = None
+
+try:
+    from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu  # type: ignore
+except Exception:
+    SmoothingFunction = None
+    sentence_bleu = None
+
+try:
+    from nltk.translate.meteor_score import meteor_score  # type: ignore
+except Exception:
+    meteor_score = None
+
+try:
+    from rouge_score import rouge_scorer  # type: ignore
+except Exception:
+    rouge_scorer = None
+
+try:
+    from sentence_transformers import SentenceTransformer  # type: ignore
+except Exception:
+    SentenceTransformer = None
 
 # from load_dataset import load_locomo_dataset, QA, Turn, Session, Conversation
-from sentence_transformers.util import pytorch_cos_sim
+try:
+    from sentence_transformers.util import pytorch_cos_sim  # type: ignore
+except Exception:
+    pytorch_cos_sim = None
 
 # # Download required NLTK data
 # try:
@@ -37,6 +64,7 @@ from sentence_transformers.util import pytorch_cos_sim
 # except Exception as e:
 #     print(f"Warning: Could not load SentenceTransformer model: {e}")
 #     sentence_model = None
+sentence_model = None
 
 
 def simple_tokenize(text):
@@ -48,6 +76,8 @@ def simple_tokenize(text):
 
 def calculate_rouge_scores(prediction: str, reference: str) -> Dict[str, float]:
     """Calculate ROUGE scores for prediction against reference."""
+    if rouge_scorer is None:
+        return {"rouge1_f": 0.0, "rouge2_f": 0.0, "rougeL_f": 0.0}
     scorer = rouge_scorer.RougeScorer(["rouge1", "rouge2", "rougeL"], use_stemmer=True)
     scores = scorer.score(reference, prediction)
     return {
@@ -59,6 +89,8 @@ def calculate_rouge_scores(prediction: str, reference: str) -> Dict[str, float]:
 
 def calculate_bleu_scores(prediction: str, reference: str) -> Dict[str, float]:
     """Calculate BLEU scores with different n-gram settings."""
+    if nltk is None or sentence_bleu is None or SmoothingFunction is None:
+        return {"bleu1": 0.0, "bleu2": 0.0, "bleu3": 0.0, "bleu4": 0.0}
     pred_tokens = nltk.word_tokenize(prediction.lower())
     ref_tokens = [nltk.word_tokenize(reference.lower())]
 
@@ -79,6 +111,8 @@ def calculate_bleu_scores(prediction: str, reference: str) -> Dict[str, float]:
 
 def calculate_bert_scores(prediction: str, reference: str) -> Dict[str, float]:
     """Calculate BERTScore for semantic similarity."""
+    if bert_score is None:
+        return {"bert_precision": 0.0, "bert_recall": 0.0, "bert_f1": 0.0}
     try:
         P, R, F1 = bert_score([prediction], [reference], lang="en", verbose=False)
         return {"bert_precision": P.item(), "bert_recall": R.item(), "bert_f1": F1.item()}
@@ -89,6 +123,8 @@ def calculate_bert_scores(prediction: str, reference: str) -> Dict[str, float]:
 
 def calculate_meteor_score(prediction: str, reference: str) -> float:
     """Calculate METEOR score for the prediction."""
+    if meteor_score is None:
+        return 0.0
     try:
         return meteor_score([reference.split()], prediction.split())
     except Exception as e:
@@ -98,7 +134,7 @@ def calculate_meteor_score(prediction: str, reference: str) -> float:
 
 def calculate_sentence_similarity(prediction: str, reference: str) -> float:
     """Calculate sentence embedding similarity using SentenceBERT."""
-    if sentence_model is None:
+    if sentence_model is None or pytorch_cos_sim is None:
         return 0.0
     try:
         # Encode sentences
