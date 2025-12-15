@@ -48,19 +48,29 @@ Rewritten Query:
 # 3. 最终回答 Prompt (优化版)
 # 强制使用 XML 标签包裹答案，方便后续代码提取
 ANSWER_PROMPT = """
-You are a direct QA system. 
-Based on the retrieved context below, answer the question as concisely as possible.
+You are a highly intelligent QA Agent. You have access to the COMPLETE conversation history and specific retrieved memory highlights.
 
-Context:
-{context}
+=== PART 1: COMPLETE CONVERSATION HISTORY ===
+(This is the ground truth timeline of all events)
+{full_history}
 
-Question: {question}
+=== PART 2: RETRIEVED RAW FRAGMENTS ===
+(These are potential matches from the database, for reference)
+{origin_memories}
 
-Rules:
-1. Output ONLY the answer. No explanations, no complete sentences, no "The answer is...".
-2. If the answer is a person, output the name.
-3. If the answer is a date, output the date.
-4. If the answer is a place, output the place.
+=== PART 3: RETRIEVED FACT SUMMARIES ===
+(These are processed facts to help reasoning)
+{process_memories}
+
+=== QUESTION ===
+{question}
+
+=== INSTRUCTIONS ===
+1. Base your answer primarily on the "COMPLETE CONVERSATION HISTORY".
+2. Use "RETRIEVED FRAGMENTS/FACTS" to quickly locate key details or confirm dates.
+3. Answer the question directly and concisely.
+4. If the question asks for a date, output the date or simply "the last weekend", etc.
+5. Output ONLY the answer string.
 
 Answer:
 """

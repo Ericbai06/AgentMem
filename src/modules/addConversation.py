@@ -47,8 +47,6 @@ class RawConversationAdder:
         完全模仿 add.py 的批量处理逻辑，但去掉了 preprocessor。
         直接存入原始的 messages 列表。
         """
-        # 注意：add.py 原文中有一个 messages = messages[:2]，这可能是调试用的，
-        # 为了保证 High Recall (高召回率)，这里我们去掉切片，存储全部对话。
         
         for i in tqdm(range(0, len(messages), self.batch_size), desc=desc):
             batch_messages = messages[i : i + self.batch_size]

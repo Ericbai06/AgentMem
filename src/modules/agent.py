@@ -2,7 +2,7 @@ import json
 import os
 import time
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 from openai import OpenAI
 from memos.api.client import MemOSClient
@@ -11,7 +11,7 @@ from .prompts import QUERY_REWRITE_PROMPT, ANSWER_PROMPT
 
 class LocomoAgent:
     def __init__(self):
-        # 双客户端初始化
+        # 双客户端
         self.client_origin = MemOSClient(api_key=Config.MEMOS_ORIGIN_API_KEY)
         self.client_process = MemOSClient(api_key=Config.MEMOS_PROCESS_API_KEY)
         
@@ -32,33 +32,25 @@ class LocomoAgent:
             return question
 
     def _parse_search_response(self, res, source_type):
-        """通用解析函数"""
         memories = []
         data_list = []
-        # 兼容 SDK 不同版本的返回结构
         if hasattr(res, 'data') and hasattr(res.data, 'memory_detail_list'):
             data_list = res.data.memory_detail_list
         elif isinstance(res, dict):
             data_list = res.get('data', {}).get('memory_detail_list', [])
-        elif isinstance(res, list): # 某些情况直接返回 list
+        elif isinstance(res, list):
             data_list = res
             
         for item in data_list:
-            # 健壮性获取
             content = getattr(item, 'memory_value', None) or (item.get('memory_value') if isinstance(item, dict) else "")
             ts = getattr(item, 'conversation_id', None) or (item.get('conversation_id') if isinstance(item, dict) else "Unknown Date")
-            
             if content:
-                memories.append({
-                    "timestamp": ts, 
-                    "content": content, 
-                    "source": source_type
-                })
+                memories.append({"timestamp": ts, "content": content})
         return memories
 
     def search_memories(self, user_id, query):
+        """双路检索，返回两组独立的记忆"""
         try:
-            # 并行检索
             with ThreadPoolExecutor(max_workers=2) as executor:
                 f1 = executor.submit(self.client_origin.search_memory, query, user_id, "search")
                 f2 = executor.submit(self.client_process.search_memory, query, user_id, "search")
@@ -69,83 +61,146 @@ class LocomoAgent:
             mems_origin = self._parse_search_response(res_origin, "RAW")
             mems_process = self._parse_search_response(res_process, "FACT")
             
-            all_memories = mems_origin + mems_process
-            # 按时间戳简单排序
-            all_memories.sort(key=lambda x: str(x.get('timestamp', '')))
+            # 按时间排序
+            mems_origin.sort(key=lambda x: str(x.get('timestamp', '')))
+            mems_process.sort(key=lambda x: str(x.get('timestamp', '')))
             
-            return all_memories
+            return mems_origin, mems_process
         except Exception as e:
             print(f"Search error: {e}")
-            return []
+            return [], []
 
-    def answer_question(self, user_id, user_name, question):
+    def _get_full_conversation_text(self, conversation_data):
+        """
+        将 JSON 格式的完整对话转换为按时间排序的文本字符串。
+        """
+        timeline = []
+        
+        # 遍历所有 key 寻找 conversation chunks
+        for key in conversation_data.keys():
+            if key in ["speaker_a", "speaker_b"] or "_date_time" in key or "timestamp" in key:
+                continue
+            
+            date_key = key + "_date_time"
+            if date_key not in conversation_data:
+                continue
+                
+            timestamp = conversation_data[date_key]
+            chats = conversation_data[key]
+            
+            # 格式化这一段对话
+            chunk_text = f"--- Date: {timestamp} ---\n"
+            for chat in chats:
+                chunk_text += f"{chat['speaker']}: {chat['text']}\n"
+            
+            timeline.append({"time": timestamp, "text": chunk_text})
+        
+        # 按时间排序
+        timeline.sort(key=lambda x: x["time"])
+        
+        return "\n".join([t["text"] for t in timeline])
+
+    def answer_question(self, user_id, user_name, question, full_history_text):
         # 1. 重写问题
         rewritten_q = self.rewrite_query(question, user_name)
         
-        # 2. 双路检索
-        memories = self.search_memories(user_id, rewritten_q)
+        # 2. 检索 (获取两组记忆)
+        mems_origin, mems_process = self.search_memories(user_id, rewritten_q)
         
-        # 3. 构建上下文
-        context_lines = []
-        for m in memories:
-            # 格式：[2022-01-01] Content
-            context_lines.append(f"[{m['timestamp']}] {m['content']}")
+        # 3. 格式化检索结果字符串
+        origin_str = "\n".join([f"[{m['timestamp']}] {m['content']}" for m in mems_origin])
+        process_str = "\n".join([f"[{m['timestamp']}] {m['content']}" for m in mems_process])
         
-        context_str = "\n".join(context_lines)
+        # 4. 组装 Super Prompt
+        prompt = ANSWER_PROMPT.format(
+            full_history=full_history_text,
+            origin_memories=origin_str,
+            process_memories=process_str,
+            question=question
+        )
         
-        # 4. 生成答案 (Direct Answer)
-        prompt = ANSWER_PROMPT.format(question=question, context=context_str)
-        
+        # 5. 生成
         start_t = time.time()
         response = self.llm_client.chat.completions.create(
             model=Config.MODEL_NAME,
             messages=[{"role": "system", "content": prompt}],
-            temperature=0.0, # 保持0温确保简洁
-            max_tokens=50    # 限制 token 输出长度，强制模型短答
+            temperature=0.0,
+            max_tokens=50 # 限制长度，强制直接回答
         )
         duration = time.time() - start_t
         
-        # 直接拿内容，不做任何处理
         final_answer = response.choices[0].message.content.strip()
         
-        return final_answer, memories, duration
+        # 合并记忆用于 evidence 展示
+        all_mems = mems_origin + mems_process
+        
+        return final_answer, all_mems, duration
 
-    def process_one_qa(self, qa_item, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name):
+    def process_one_qa(self, qa_item, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name, full_conversation_text):
         question = qa_item["question"]
-        # 直接获取答案
-        ans_a, mems_a, _ = self.answer_question(speaker_a_id, spk_a_name, question)
+        
+        # 这里传入了 full_conversation_text
+        ans_a, mems_a, _ = self.answer_question(speaker_a_id, spk_a_name, question, full_conversation_text)
         
         return {
             "question": question,
             "answer": qa_item.get("answer", ""),
             "category": qa_item.get("category", ""),
-            "response": ans_a, # 直接存入模型输出
+            "response": ans_a,
             "evidence": [],
             "speaker_1_memories": mems_a,
             "response_time": 0
         }
 
     def run_eval(self):
-        print(f"🚀 Starting Fast-Track Evaluation (Direct Answer)...")
+        print(f"🚀 Starting Full-Context + RAG Evaluation...")
+        
         with open(Config.DATA_PATH, "r") as f:
             raw_data = json.load(f)
+
+        # 1. 计算总问题数，用于初始化进度条
+        total_questions = sum(len(item["qa"]) for item in raw_data)
+        print(f"📊 Total Conversations: {len(raw_data)} | Total Questions: {total_questions}")
+
+        # 2. 创建全局进度条
+        with tqdm(total=total_questions, desc="Answering Questions", unit="Q") as pbar:
             
-        for idx, item in tqdm(enumerate(raw_data), total=len(raw_data)):
-            spk_a = item["conversation"]["speaker_a"]
-            spk_b = item["conversation"]["speaker_b"]
-            uid_a = f"{spk_a}_{idx}"
-            uid_b = f"{spk_b}_{idx}"
-            qa_list = item["qa"]
-            
-            with ThreadPoolExecutor(max_workers=Config.MAX_WORKERS_SEARCH) as executor:
-                futures = []
-                for qa in qa_list:
-                    futures.append(executor.submit(self.process_one_qa, qa, uid_a, uid_b, spk_a, spk_b))
+            for idx, item in enumerate(raw_data):
+                # 预处理：提取完整对话文本
+                full_text = self._get_full_conversation_text(item["conversation"])
                 
-                for f in futures:
-                    res = f.result()
-                    self.results[idx].append(res)
-            
-            with open(self.output_file, "w") as f:
-                json.dump(self.results, f, indent=4)
+                spk_a = item["conversation"]["speaker_a"]
+                spk_b = item["conversation"]["speaker_b"]
+                uid_a = f"{spk_a}_{idx}"
+                uid_b = f"{spk_b}_{idx}"
+                qa_list = item["qa"]
+                
+                # 3. 处理当前对话下的所有问题
+                with ThreadPoolExecutor(max_workers=Config.MAX_WORKERS_SEARCH) as executor:
+                    futures = []
+                    for qa in qa_list:
+                        # 提交任务
+                        future = executor.submit(
+                            self.process_one_qa, qa, uid_a, uid_b, spk_a, spk_b, full_text
+                        )
+                        futures.append(future)
+                    
+                    # 4. 使用 as_completed 实时获取完成的任务
+                    for f in as_completed(futures):
+                        res = f.result()
+                        self.results[idx].append(res)
+                        
+                        # 更新进度条
+                        pbar.update(1)
+                        
+                        # 在进度条后面显示当前刚刚完成的问题（截取前20个字符避免刷屏）
+                        short_q = res['question']
+                        if len(short_q) > 20:
+                            short_q = short_q[:20] + "..."
+                        pbar.set_postfix({"Last Done": short_q})
+
+                # 每个对话处理完后保存一次，防止数据丢失
+                with open(self.output_file, "w") as f:
+                    json.dump(self.results, f, indent=4)
+                    
         print(f"✅ Evaluation Complete. Results saved to {self.output_file}")
