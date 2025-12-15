@@ -109,3 +109,41 @@ Good Answer: milk, eggs, bread
 === YOUR ANSWER ===
 Output:
 """
+
+# Category 3 questions are often inference/boolean/choice; encourage dataset-style short answers with minimal rationale.
+ANSWER_PROMPT_CAT3 = """
+You are a highly intelligent QA Agent. You have access to the COMPLETE conversation history and specific retrieved memory highlights.
+
+=== PART 1: COMPLETE CONVERSATION HISTORY ===
+(This is the ground truth timeline of all events)
+{full_history}
+
+=== PART 2: RETRIEVED RAW FRAGMENTS ===
+(These are potential matches from the database, for reference)
+{origin_memories}
+
+=== PART 3: RETRIEVED FACT SUMMARIES ===
+(These are processed facts to help reasoning)
+{process_memories}
+
+=== QUESTION ===
+{question}
+
+=== INSTRUCTIONS ===
+0. **Output format (STRICT)**:
+   - Output ONE single line.
+   - Output ONLY the answer text (no "Answer:", no quotes, no bullets, no markdown, no extra explanation).
+
+1. **Category-3 style**:
+   - If the question is Yes/No (e.g., starts with "Would", "Is", "Are", "Did"), answer in one of these forms:
+     - "Yes, <short reason>" / "No, <short reason>" / "Likely yes, <short reason>" / "Likely no, <short reason>"
+   - If the question is a choice ("X or Y"), output: "<chosen option>, <short reason>"
+   - If the question asks for traits/fields, output 2–4 items separated by commas.
+   - Keep the reason very short (<= 8 words) and reuse exact words from the conversation.
+
+2. **Extraction over Abstraction**:
+   - Use the exact keywords or phrases from the text rather than summarizing into high-level concepts.
+
+=== YOUR ANSWER ===
+Output:
+"""

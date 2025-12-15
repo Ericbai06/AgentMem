@@ -8,7 +8,7 @@ from tqdm import tqdm
 from openai import OpenAI
 from memos.api.client import MemOSClient
 from .config import Config
-from .prompts import QUERY_REWRITE_PROMPT, ANSWER_PROMPT
+from .prompts import QUERY_REWRITE_PROMPT, ANSWER_PROMPT, ANSWER_PROMPT_CAT3
 
 class LocomoAgent:
     def __init__(self):
@@ -156,7 +156,7 @@ class LocomoAgent:
         
         return "\n".join([t["text"] for t in timeline])
 
-    def answer_question(self, targets, question, full_history_text):
+    def answer_question(self, targets, question, full_history_text, category=None):
         """
         Answer a question using routed speaker memories.
         targets: List of (user_id, user_name)
@@ -184,7 +184,8 @@ class LocomoAgent:
         process_str = "\n".join([f"[{m.get('speaker','')}|{m['timestamp']}] {m['content']}" for m in mems_process_all])
         
         # 4. 组装 Super Prompt
-        prompt = ANSWER_PROMPT.format(
+        prompt_template = ANSWER_PROMPT_CAT3 if str(category) == "3" else ANSWER_PROMPT
+        prompt = prompt_template.format(
             full_history=full_history_text,
             origin_memories=origin_str,
             process_memories=process_str,
@@ -197,7 +198,7 @@ class LocomoAgent:
             model=Config.MODEL_NAME,
             messages=[{"role": "system", "content": prompt}],
             temperature=0.0,
-            max_tokens=96,
+            max_tokens=160 if str(category) == "3" else 96,
             stop=["\n"],
             extra_body={"enable_thinking": False},
         )
@@ -213,11 +214,12 @@ class LocomoAgent:
 
     def process_one_qa(self, qa_item, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name, full_conversation_text):
         question = qa_item["question"]
+        category = qa_item.get("category", "")
         
         targets = self._route_targets(question, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name)
 
         # 这里传入了 full_conversation_text
-        ans_a, mems_a, _ = self.answer_question(targets, question, full_conversation_text)
+        ans_a, mems_a, _ = self.answer_question(targets, question, full_conversation_text, category=category)
         
         return {
             "question": question,
