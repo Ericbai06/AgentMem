@@ -66,6 +66,11 @@ You are a highly intelligent QA Agent. You have access to the COMPLETE conversat
 {question}
 
 === INSTRUCTIONS ===
+0. **Output format (STRICT)**:
+   - Output ONE single line.
+   - Output ONLY the answer text (no "Answer:", no quotes, no bullets, no markdown, no extra explanation).
+   - Avoid parentheses/brackets. Do not include multiple lines.
+
 1. **Date format is CRITICAL**: 
    - ALWAYS calculate the specific calendar date (e.g., "15 June, 2023") based on the conversation history. 
    - DO NOT use relative terms like "yesterday", "last week", "a few days ago", or "this month" unless the specific date is impossible to determine.
@@ -102,6 +107,5 @@ Bad Answer: groceries
 Good Answer: milk, eggs, bread
 
 === YOUR ANSWER ===
-
-Answer:
+Output:
 """

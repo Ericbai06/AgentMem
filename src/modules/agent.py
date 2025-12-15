@@ -25,7 +25,10 @@ class LocomoAgent:
             response = self.llm_client.chat.completions.create(
                 model=Config.MODEL_NAME,
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.0
+                temperature=0.0,
+                max_tokens=64,
+                stop=["\n"],
+                extra_body={"enable_thinking": False},
             )
             return response.choices[0].message.content.strip()
         except:
@@ -157,7 +160,9 @@ class LocomoAgent:
             model=Config.MODEL_NAME,
             messages=[{"role": "system", "content": prompt}],
             temperature=0.0,
-            # max_tokens=50 # 限制长度，强制直接回答
+            max_tokens=96,
+            stop=["\n"],
+            extra_body={"enable_thinking": False},
         )
         duration = time.time() - start_t
         
