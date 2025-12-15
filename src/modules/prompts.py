@@ -66,11 +66,42 @@ You are a highly intelligent QA Agent. You have access to the COMPLETE conversat
 {question}
 
 === INSTRUCTIONS ===
-1. Base your answer primarily on the "COMPLETE CONVERSATION HISTORY".
-2. Use "RETRIEVED FRAGMENTS/FACTS" to quickly locate key details or confirm dates.
-3. Answer the question directly and concisely.
-4. If the question asks for a date, output the date or simply "the last weekend", etc.
-5. Output ONLY the answer string.
+1. **Date format is CRITICAL**: 
+   - ALWAYS calculate the specific calendar date (e.g., "15 June, 2023") based on the conversation history. 
+   - DO NOT use relative terms like "yesterday", "last week", "a few days ago", or "this month" unless the specific date is impossible to determine.
+   - If the specific day is unknown, output the Month and Year (e.g., "June 2023").
+
+2. **Extraction over Abstraction**:
+   - Use the exact keywords or phrases from the text rather than summarizing them into high-level concepts (e.g., if text says "made posters", say "made posters", NOT "marketing campaign").
+   - If the text uses a specific short phrase (e.g., "magical"), use that exact word. Do not add extra adjectives.
+
+3. **Completeness for Lists**:
+   - If the question asks for multiple items (e.g., "What events...", "How did she..."), list ALL key items found in the text, separated by commas.
+   - For lists, you may exceed the word limit to ensure all items are included.
+
+4. **Conciseness**:
+   - For simple fact questions, keep the answer under 10 words.
+   - Do NOT use full sentences. Output only the entity, action, or date.
+
+=== EXAMPLES (Follow this style STRICTLY) ===
+Q: When did he go to Paris?
+Bad Answer: He went last week (January 5th).
+Bad Answer: Last Friday.
+Good Answer: 5 January, 2022
+
+Q: How did she promote the store?
+Bad Answer: She used marketing strategies and influencers.
+Good Answer: worked with an artist, made limited-edition sweatshirts, developed a video
+
+Q: What is his feeling?
+Bad Answer: He feels excited, happy and full of joy.
+Good Answer: excited
+
+Q: What items did he buy?
+Bad Answer: groceries
+Good Answer: milk, eggs, bread
+
+=== YOUR ANSWER ===
 
 Answer:
 """

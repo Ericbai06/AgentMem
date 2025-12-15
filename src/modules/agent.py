@@ -125,7 +125,7 @@ class LocomoAgent:
             model=Config.MODEL_NAME,
             messages=[{"role": "system", "content": prompt}],
             temperature=0.0,
-            max_tokens=50 # 限制长度，强制直接回答
+            # max_tokens=50 # 限制长度，强制直接回答
         )
         duration = time.time() - start_t
         
