@@ -1,0 +1,163 @@
+import json
+import os
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+from dotenv import load_dotenv
+from tqdm import tqdm
+
+# from mem0 import MemoryClient
+from memos.api.client import MemOSClient
+from src.preprocess import ConversationPreprocessor
+
+load_dotenv()
+
+
+# Update custom instructions
+custom_instructions = """
+Generate personal memories that follow these guidelines:
+
+1. Each memory should be self-contained with complete context, including:
+   - The person's name, do not use "user" while creating memories
+   - Personal details (career aspirations, hobbies, life circumstances)
+   - Emotional states and reactions
+   - Ongoing journeys or future plans
+   - Specific dates when events occurred
+
+2. Include meaningful personal narratives focusing on:
+   - Identity and self-acceptance journeys
+   - Family planning and parenting
+   - Creative outlets and hobbies
+   - Mental health and self-care activities
+   - Career aspirations and education goals
+   - Important life events and milestones
+
+3. Make each memory rich with specific details rather than general statements
+   - Include timeframes (exact dates when possible)
+   - Name specific activities (e.g., "charity race for mental health" rather than just "exercise")
+   - Include emotional context and personal growth elements
+
+4. Extract memories only from user messages, not incorporating assistant responses
+
+5. Format each memory as a paragraph with a clear narrative structure that captures the person's experience, challenges, and aspirations
+"""
+
+
+class MemoryADD:
+    def __init__(self, data_path=None, batch_size=2, is_graph=False):
+        self.client = MemOSClient(
+            api_key=os.getenv("MEMOS_API_KEY")
+        )
+        self.preprocessor = ConversationPreprocessor()
+
+        # self.mem0_client.update_project(custom_instructions=custom_instructions)
+        self.batch_size = batch_size
+        self.data_path = data_path
+        self.data = None
+        self.is_graph = is_graph
+        if data_path:
+            self.load_data()
+
+    def load_data(self):
+        with open(self.data_path, "r") as f:
+            self.data = json.load(f)
+        return self.data
+
+    def add_memory(self, user_id, message, metadata, retries=3):
+        for attempt in range(retries):
+            try:
+                # MemOS uses conversation_id, we use timestamp as conversation_id to keep context
+                conversation_id = metadata.get("timestamp", "default_id")
+                _ = self.client.add_message(
+                    messages=message, user_id=user_id, conversation_id=conversation_id
+                )
+                return
+            except Exception as e:
+                if attempt < retries - 1:
+                    time.sleep(1)  # Wait before retrying
+                    continue
+                else:
+                    raise e
+
+    def add_memories_for_speaker(self, speaker_user_id, speaker_name, messages, timestamp, desc):
+        messages = messages[:2]
+        for i in tqdm(range(0, len(messages), self.batch_size), desc=desc):
+            batch_messages = messages[i : i + self.batch_size]
+            preprocessed_batch = self.preprocessor.preprocess_messages(
+                batch_messages,
+                speaker_display_name=speaker_name,
+                conversation_timestamp=timestamp,
+            )
+            final_batch = preprocessed_batch or batch_messages
+            self.add_memory(speaker_user_id, final_batch, metadata={"timestamp": timestamp})
+
+    def process_conversation(self, item, idx):
+        conversation = item["conversation"]
+        speaker_a = conversation["speaker_a"]
+        speaker_b = conversation["speaker_b"]
+
+        speaker_a_user_id = f"{speaker_a}_{idx}"
+        speaker_b_user_id = f"{speaker_b}_{idx}"
+
+        # delete all memories for the two users
+        # self.mem0_client.delete_all(user_id=speaker_a_user_id)
+        # self.mem0_client.delete_all(user_id=speaker_b_user_id)
+
+        for key in conversation.keys():
+            if key in ["speaker_a", "speaker_b"] or "date" in key or "timestamp" in key:
+                continue
+
+            date_time_key = key + "_date_time"
+            timestamp = conversation[date_time_key]
+            chats = conversation[key]
+
+            messages = []
+            messages_reverse = []
+            for chat in chats:
+                if chat["speaker"] == speaker_a:
+                    messages.append({"role": "user", "content": f"{speaker_a}: {chat['text']}", "chat_time": timestamp})
+                    messages_reverse.append({"role": "assistant", "content": f"{speaker_a}: {chat['text']}", "chat_time": timestamp})
+                elif chat["speaker"] == speaker_b:
+                    messages.append({"role": "assistant", "content": f"{speaker_b}: {chat['text']}", "chat_time": timestamp})
+                    messages_reverse.append({"role": "user", "content": f"{speaker_b}: {chat['text']}", "chat_time": timestamp})
+                else:
+                    raise ValueError(f"Unknown speaker: {chat['speaker']}")
+
+            # add memories for the two users on different threads
+            thread_a = threading.Thread(
+                target=self.add_memories_for_speaker,
+                args=(
+                    speaker_a_user_id,
+                    speaker_a,
+                    messages,
+                    timestamp,
+                    "Adding Memories for Speaker A",
+                ),
+            )
+            thread_b = threading.Thread(
+                target=self.add_memories_for_speaker,
+                args=(
+                    speaker_b_user_id,
+                    speaker_b,
+                    messages_reverse,
+                    timestamp,
+                    "Adding Memories for Speaker B",
+                ),
+            )
+
+            thread_a.start()
+            thread_b.start()
+            thread_a.join()
+            thread_b.join()
+
+        print("Messages added successfully")
+
+    def process_all_conversations(self, max_workers=5):
+        if not self.data:
+            raise ValueError("No data loaded. Please set data_path and call load_data() first.")
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = [executor.submit(self.process_conversation, item, idx) for idx, item in enumerate(self.data)]
+
+            for future in futures:
+                future.result()
