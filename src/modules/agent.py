@@ -53,11 +53,8 @@ class LocomoAgent:
 
     def _postprocess_answer(self, text, speaker_names=()):
         """
-        Deterministic cleanup to make answers evaluation-friendly:
-        - single line
-        - strip prefixes/markdown/bullets
-        - remove bracket punctuation that breaks simple tokenization
-        - drop leading "<Speaker> is/has ..." when present
+        Minimal deterministic cleanup to make answers evaluation-friendly without
+        destroying punctuation that the official tokenizer keeps (e.g., quotes, semicolons).
         """
         if text is None:
             return ""
@@ -67,10 +64,10 @@ class LocomoAgent:
         if lines:
             s = lines[0]
 
-        s = re.sub(r"^(answer|output)\s*:\s*", "", s, flags=re.IGNORECASE)
+        s = re.sub(r"^(answer|output)\s*[:：]\s*", "", s, flags=re.IGNORECASE)
         s = re.sub(r"^[-*]\s+", "", s)
         s = s.replace("**", "").replace("__", "").replace("`", "")
-        s = s.strip().strip('"').strip("'").strip()
+        s = s.strip()
 
         for name in speaker_names or []:
             if not name:
@@ -80,9 +77,8 @@ class LocomoAgent:
                 s = pat.sub("", s).strip()
                 break
 
-        s = re.sub(r"^(a|an|the)\s+", "", s, flags=re.IGNORECASE)
+        s = s.strip().strip("()[]{}").strip()
         s = re.sub(r"[\(\)\[\]\{\}]", " ", s)
-        s = s.replace(":", " ").replace(";", " ")
         s = re.sub(r"[.?!]+$", "", s)
         s = re.sub(r"\s+", " ", s).strip()
         return s
