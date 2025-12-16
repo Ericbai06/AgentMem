@@ -1,9 +1,10 @@
 import json
+import os
 
 import pandas as pd
 
 # Load the evaluation metrics data
-with open("results\mem0_results_top_30_filter_False_graph_False.json", "r") as f:
+with open(os.path.join("results", "mem0_results_top_30_filter_False_graph_False.json"), "r") as f:
     data = json.load(f)
 
 # Flatten the data into a list of question items
