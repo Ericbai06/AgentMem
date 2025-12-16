@@ -1,4 +1,1070 @@
 {
+    "0": [
+        {
+            "question": "What did Caroline research?",
+            "answer": "Adoption agencies",
+            "response": "counseling and mental health career options",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Melanie paint a sunrise?",
+            "answer": "2022",
+            "response": "May 2022",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "What fields would Caroline be likely to pursue in her educaton?",
+            "answer": "Psychology, counseling certification",
+            "response": "Counseling, mental health, working with trans people, LGBTQ+ support",
+            "category": "3",
+            "f1_score": 0.16666666666666666
+        },
+        {
+            "question": "When did Caroline go to the LGBTQ support group?",
+            "answer": "7 May 2023",
+            "response": "7 May, 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What is Caroline's identity?",
+            "answer": "Transgender woman",
+            "response": "transgender woman",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Melanie run a charity race?",
+            "answer": "The sunday before 25 May 2023",
+            "response": "20 May, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "What is Caroline's relationship status?",
+            "answer": "Single",
+            "response": "single",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When is Melanie planning on going camping?",
+            "answer": "June 2023",
+            "response": "June 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Caroline meet up with her friends, family, and mentors?",
+            "answer": "The week before 9 June 2023",
+            "response": "last week on 2 June, 2023",
+            "category": "2",
+            "f1_score": 0.5
+        },
+        {
+            "question": "When did Caroline give a speech at a school?",
+            "answer": "The week before 9 June 2023",
+            "response": "2 June, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "Where did Caroline move from 4 years ago?",
+            "answer": "Sweden",
+            "response": "Sweden",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "How long ago was Caroline's 18th birthday?",
+            "answer": "10 years ago",
+            "response": "10 years ago",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "How long has Caroline had her current group of friends for?",
+            "answer": "4 years",
+            "response": "4 years",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What career path has Caroline decided to persue?",
+            "answer": "counseling or mental health for Transgender people",
+            "response": "counseling and mental health",
+            "category": "1",
+            "f1_score": 0.5454545454545454
+        },
+        {
+            "question": "Would Caroline still want to pursue counseling as a career if she hadn't received support growing up?",
+            "answer": "Likely no",
+            "response": "Likely no, her own journey and support she received motivated her",
+            "category": "3",
+            "f1_score": 0.33333333333333337
+        },
+        {
+            "question": "When did Melanie sign up for a pottery class?",
+            "answer": "2 July 2023",
+            "response": "30 June, 2023",
+            "category": "2",
+            "f1_score": 0.3333333333333333
+        },
+        {
+            "question": "When is Caroline going to the transgender conference?",
+            "answer": "July 2023",
+            "response": "July 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What activities does Melanie partake in?",
+            "answer": "pottery, camping, painting, swimming",
+            "response": "pottery, painting, camping, hiking, running, reading, playing violin, playing clarinet, volunteering, charity races, museum visits, beach trips, family outings, concerts, picnics",
+            "category": "1",
+            "f1_score": 0.24999999999999997
+        },
+        {
+            "question": "Where has Melanie camped?",
+            "answer": "beach, mountains, forest",
+            "response": "mountains, forest, beach",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What do Melanie's kids like?",
+            "answer": "dinosaurs, nature",
+            "response": "nature, learning about animals, pottery, painting, exploring parks, camping, the beach, dinosaur exhibits",
+            "category": "1",
+            "f1_score": 0.13333333333333336
+        },
+        {
+            "question": "When did Melanie go to the museum?",
+            "answer": "5 July 2023",
+            "response": "5 July, 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Caroline have a picnic?",
+            "answer": "The week before 6 July 2023",
+            "response": "previous week of 6 July, 2023",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "Would Caroline likely have Dr. Seuss books on her bookshelf?",
+            "answer": "Yes, since she collects classic children's books",
+            "response": "Yes, she is creating a library for children with classics",
+            "category": "3",
+            "f1_score": 0.23529411764705882
+        },
+        {
+            "question": "What books has Melanie read?",
+            "answer": "\"Nothing is Impossible\", \"Charlotte's Web\"",
+            "response": "book recommended by Caroline, Charlotte's Web, a book that inspired her to always pursue her dreams",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What does Melanie do to destress?",
+            "answer": "Running, pottery",
+            "response": "pottery, painting, playing clarinet, running, spending time in nature, reading, playing violin",
+            "category": "1",
+            "f1_score": 0.3076923076923077
+        },
+        {
+            "question": "When did Melanie read the book \"nothing is impossible\"?",
+            "answer": "2022",
+            "response": "Last year",
+            "category": "2",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Caroline go to the LGBTQ conference?",
+            "answer": "10 July 2023",
+            "response": "10 July, 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Caroline go to the adoption meeting?",
+            "answer": "The friday before 15 July 2023",
+            "response": "14 July, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "Would Caroline pursue writing as a career option?",
+            "answer": "LIkely no; though she likes reading, she wants to be a counselor",
+            "response": "No, she is exploring counseling and mental health",
+            "category": "3",
+            "f1_score": 0.10526315789473685
+        },
+        {
+            "question": "Would Melanie be considered a member of the LGBTQ community?",
+            "answer": "Likely no, she does not refer to herself as part of it",
+            "response": "No, no mention of her being LGBTQ",
+            "category": "3",
+            "f1_score": 0.2222222222222222
+        },
+        {
+            "question": "When did Melanie go to the pottery workshop?",
+            "answer": "The Friday before 15 July 2023",
+            "response": "15 July, 2023",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "When did Melanie go camping in June?",
+            "answer": "The week before 27 June 2023",
+            "response": "20 June, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "When did Caroline go to a pride parade during the summer?",
+            "answer": "The week before 3 July 2023",
+            "response": "24 June, 2023",
+            "category": "2",
+            "f1_score": 0.2222222222222222
+        },
+        {
+            "question": "When did Melanie go camping in July?",
+            "answer": "two weekends before 17 July 2023",
+            "response": "3 July, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "What events has Caroline participated in to help children?",
+            "answer": "Mentoring program, school speech",
+            "response": "joined a mentorship program for LGBTQ youth, volunteered at an LGBTQ+ youth center, helped put together a talent show for kids",
+            "category": "1",
+            "f1_score": 0.0909090909090909
+        },
+        {
+            "question": "When did Caroline join a mentorship program?",
+            "answer": "The weekend before 17 July 2023",
+            "response": "July 2023",
+            "category": "2",
+            "f1_score": 0.5
+        },
+        {
+            "question": "What LGBTQ+ events has Caroline participated in?",
+            "answer": "Pride parade, school speech, support group",
+            "response": "transgender poetry reading on 6 October 2023, LGBTQ+ counseling workshop on 23 June 2023, LGBTQ+ pride parade on 26 June 2023, LGBTQ support group on 7 May 2023, LGBTQ conference on 10 July 2023, school talk on 2 June 2023, mentorship program for LGBTQ youth, LGBTQ art show in September 2023, volunteer at LGBTQ+ youth center in August 2023, LGBTQ activist",
+            "category": "1",
+            "f1_score": 0.2222222222222222
+        },
+        {
+            "question": "What did Melanie paint recently?",
+            "answer": "sunset",
+            "response": "sunset-inspired painting, an abstract painting, a horse painting",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What activities has Melanie done with her family?",
+            "answer": "Pottery, painting, camping, museum, swimming, hiking",
+            "response": "camping in the mountains, pottery workshop, hiking, exploring forests, volunteering at a homeless shelter, museum visit, beach trip, camping trip in the forest, camping trip after a road trip",
+            "category": "1",
+            "f1_score": 0.2962962962962963
+        },
+        {
+            "question": "When did Caroline join a new activist group?",
+            "answer": "The Tuesday before 20 July 2023",
+            "response": "18 July, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "How many times has Melanie gone to the beach in 2023?",
+            "answer": "2",
+            "response": "once or twice",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "In what ways is Caroline participating in the LGBTQ community?",
+            "answer": "Joining activist group, going to pride parades, participating in an art show, mentoring program",
+            "response": "attended a transgender poetry reading, attended an LGBTQ+ pride parade, attended an LGBTQ+ counseling workshop, attended an LGBTQ conference, gave a talk at a school event, joined a mentorship program for LGBTQ youth, joined an LGBTQ activist group, volunteered at an LGBTQ+ youth center, organizing an LGBTQ art show",
+            "category": "1",
+            "f1_score": 0.3181818181818182
+        },
+        {
+            "question": "Would Melanie be more interested in going to a national park or a theme park?",
+            "answer": "National park; she likes the outdoors",
+            "response": "National park, because she loves camping trips and exploring nature with her family",
+            "category": "3",
+            "f1_score": 0.21052631578947367
+        },
+        {
+            "question": "When is Melanie's daughter's birthday?",
+            "answer": "13 August",
+            "response": "13 August, 2023",
+            "category": "2",
+            "f1_score": 0.8
+        },
+        {
+            "question": "What kind of art does Caroline make?",
+            "answer": "abstract art",
+            "response": "paintings, drawings, abstract art, self-portraits, stained glass, art representing her trans experience and identity",
+            "category": "1",
+            "f1_score": 0.2666666666666667
+        },
+        {
+            "question": "When did Caroline attend a pride parade in August?",
+            "answer": "The Friday before 14 August 2023",
+            "response": "11 August, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "Would Melanie be considered an ally to the transgender community?",
+            "answer": "Yes, she is supportive",
+            "response": "Yes, she shows support and admiration for Caroline's journey",
+            "category": "3",
+            "f1_score": 0.30769230769230765
+        },
+        {
+            "question": "When did Caroline and Melanie go to a pride fesetival together?",
+            "answer": "2022",
+            "response": "August 2022",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "What would Caroline's political leaning likely be?",
+            "answer": "Liberal",
+            "response": "Liberal",
+            "category": "3",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Who supports Caroline when she has a negative experience?",
+            "answer": "Her mentors, family, and friends",
+            "response": "friends, family, and mentors",
+            "category": "1",
+            "f1_score": 0.888888888888889
+        },
+        {
+            "question": "What types of pottery have Melanie and her kids made?",
+            "answer": "bowls, cup",
+            "response": "pots, a cup, a bowl, a plate, a vase",
+            "category": "1",
+            "f1_score": 0.25
+        },
+        {
+            "question": "What has Melanie painted?",
+            "answer": "Horse, sunset, sunrise",
+            "response": "sunset-inspired piece, abstract painting, lake sunrise, nature-inspired painting with children, horse painting, landscapes and still life",
+            "category": "1",
+            "f1_score": 0.23529411764705882
+        },
+        {
+            "question": "What are Melanie's pets' names?",
+            "answer": "Oliver, Luna, Bailey",
+            "response": "Luna and Oliver",
+            "category": "1",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "When did Caroline apply to adoption agencies?",
+            "answer": "The week of 23 August 2023",
+            "response": "23 August, 2023",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "What subject have Caroline and Melanie both painted?",
+            "answer": "Sunsets",
+            "response": "sunset",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Caroline draw a self-portrait?",
+            "answer": "The week before 23 August 2023",
+            "response": "previous week on 23 August, 2023",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "When did Caroline encounter people on a hike and have a negative experience?",
+            "answer": "The week before 25 August 2023",
+            "response": "17 August, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "When did Melanie make a plate in pottery class?",
+            "answer": "24 August 2023",
+            "response": "24 August, 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Would Caroline be considered religious?",
+            "answer": "Somewhat, but not extremely religious",
+            "response": "Not religious",
+            "category": "3",
+            "f1_score": 0.5714285714285715
+        },
+        {
+            "question": "What instruments does Melanie play?",
+            "answer": "clarinet and violin",
+            "response": "violin, clarinet",
+            "category": "1",
+            "f1_score": 0.8
+        },
+        {
+            "question": "What symbols are important to Caroline?",
+            "answer": "Rainbow flag, transgender symbol",
+            "response": "necklace symbolizing love, faith, strength, and roots, the rainbow flag mural representing courage and strength, the eagle symbolizing freedom and pride, blue as her favorite color, sunflowers for warmth and happiness, roses for love and beauty",
+            "category": "1",
+            "f1_score": 0.12903225806451613
+        },
+        {
+            "question": "What musical artists/bands has Melanie seen?",
+            "answer": "Summer Sounds, Matt Patterson",
+            "response": "Matt Patterson, Summer Sounds",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When is Caroline's youth center putting on a talent show?",
+            "answer": "September 2023",
+            "response": "September 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Melanie go to the park?",
+            "answer": "27 August 2023",
+            "response": "27 August, 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Would Melanie likely enjoy the song \"The Four Seasons\" by Vivaldi?",
+            "answer": "Yes; it's classical music",
+            "response": "Yes, she is a fan of classical music like Bach and Mozart",
+            "category": "3",
+            "f1_score": 0.25
+        },
+        {
+            "question": "What does Melanie do with her family on hikes?",
+            "answer": "Roast marshmallows, tell stories",
+            "response": "explore nature, roast marshmallows, share stories, go on hikes",
+            "category": "1",
+            "f1_score": 0.46153846153846156
+        },
+        {
+            "question": "What are some changes Caroline has faced during her transition journey?",
+            "answer": "Changes to her body, losing unsupportive friends",
+            "response": "Caroline's transition changed her relationships, some close friends kept supporting her, some were not able to handle it, she is happier around those who accept and love her, her relationships feel more genuine, she realized she can be herself without fear, she found the courage to transition, she feels it is freeing to express herself authentically, she is proud of who she is",
+            "category": "1",
+            "f1_score": 0.12
+        },
+        {
+            "question": "How long has Melanie been practicing art?",
+            "answer": "Since 2016",
+            "response": "seven years",
+            "category": "2",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Caroline go biking with friends?",
+            "answer": "The weekend before 13 September 2023",
+            "response": "weekend prior to 13 September, 2023",
+            "category": "2",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "What personality traits might Melanie say Caroline has?",
+            "answer": "Thoughtful, authentic, driven",
+            "response": "caring, courageous, passionate, thoughtful",
+            "category": "3",
+            "f1_score": 0.28571428571428575
+        },
+        {
+            "question": "What book did Melanie read from Caroline's suggestion?",
+            "answer": "\"Becoming Nicole\"",
+            "response": "book you recommended a while ago",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Melanie's friend adopt a child?",
+            "answer": "2022",
+            "response": "last year",
+            "category": "2",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Melanie get hurt?",
+            "answer": "September 2023",
+            "response": "September 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What transgender-specific events has Caroline attended?",
+            "answer": "Poetry reading, conference",
+            "response": "transgender poetry reading on 6 October 2023, LGBTQ+ counseling workshop on 23 June 2023, LGBTQ support group on 7 May 2023, school event sharing her transgender journey on 2 June 2023, LGBTQ conference on 10 July 2023",
+            "category": "1",
+            "f1_score": 0.20689655172413793
+        },
+        {
+            "question": "When did Melanie's family go on a roadtrip?",
+            "answer": "The weekend before 20 October 2023",
+            "response": "15 October, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "How many children does Melanie have?",
+            "answer": "3",
+            "response": "three",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
+            "question": "When did Melanie go on a hike after the roadtrip?",
+            "answer": "19 October 2023",
+            "response": "19 October, 2023",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What items has Melanie bought?",
+            "answer": "Figurines, shoes",
+            "response": "figurines, purple running shoes",
+            "category": "1",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "Would Melanie go on another roadtrip soon?",
+            "answer": "Likely no; since this one went badly",
+            "response": "Likely yes, she loves family trips and camping",
+            "category": "3",
+            "f1_score": 0.13333333333333333
+        },
+        {
+            "question": "When did Caroline pass the adoption interview?",
+            "answer": "The Friday before 22 October 2023",
+            "response": "20 October, 2023",
+            "category": "2",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "What did the charity race raise awareness for?",
+            "answer": "mental health",
+            "response": "mental health",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What did Melanie realize after the charity race?",
+            "answer": "self-care is important",
+            "response": "self-care is important",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Melanie buy the figurines?",
+            "answer": "21 October 2023",
+            "response": "21 October, 2023",
+            "category": "2",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Would Caroline want to move back to her home country soon?",
+            "answer": "No; she's in the process of adopting children.",
+            "response": "No, she is focused on adoption and counseling career where she lives",
+            "category": "3",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What are Caroline's plans for the summer?",
+            "answer": "researching adoption agencies",
+            "response": "planning a special outing with Melanie, organizing an LGBTQ art show in September, and continuing to research adoption agencies",
+            "category": "4",
+            "f1_score": 0.18181818181818182
+        },
+        {
+            "question": "How does Melanie prioritize self-care?",
+            "answer": "by carving out some me-time each day for activities like running, reading, or playing the violin",
+            "response": "carves out daily me-time for running, reading, or playing the violin, prioritizes mental health through running, and finds peace through creativity and family",
+            "category": "4",
+            "f1_score": 0.5
+        },
+        {
+            "question": "What is Caroline excited about in the adoption process?",
+            "answer": "creating a family for kids who need one",
+            "response": "passing the adoption agency interviews on 22 October, 2023",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What type of individuals does the adoption agency Caroline is considering support?",
+            "answer": "LGBTQ+ individuals",
+            "response": "LGBTQ+ individuals",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "How long have Mel and her husband been married?",
+            "answer": "Mel and her husband have been married for 5 years.",
+            "response": "5 years",
+            "category": "4",
+            "f1_score": 0.33333333333333337
+        },
+        {
+            "question": "Why did Caroline choose the adoption agency?",
+            "answer": "because of their inclusivity and support for LGBTQ+ individuals",
+            "response": "specializes in helping LGBTQ+ individuals, inclusivity and support for the community",
+            "category": "4",
+            "f1_score": 0.6
+        },
+        {
+            "question": "What does Melanie think about Caroline's decision to adopt?",
+            "answer": "she thinks Caroline is doing something amazing and will be an awesome mom",
+            "response": "Melanie thinks it is awesome, amazing, and kind, and that Caroline's future family will be lucky to have her",
+            "category": "4",
+            "f1_score": 0.45161290322580644
+        },
+        {
+            "question": "What does Caroline's necklace symbolize?",
+            "answer": "love, faith, and strength",
+            "response": "love, faith, strength, and her roots",
+            "category": "4",
+            "f1_score": 0.8
+        },
+        {
+            "question": "What was grandma's gift to Caroline?",
+            "answer": "necklace",
+            "response": "necklace",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What country is Caroline's grandma from?",
+            "answer": "Sweden",
+            "response": "Sweden",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What is Melanie's hand-painted bowl a reminder of?",
+            "answer": "art and self-expression",
+            "response": "art and self-expression",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What did Melanie and her family do while camping?",
+            "answer": "explored nature, roasted marshmallows, and went on a hike",
+            "response": "explored nature, roasted marshmallows, went on a hike, told stories around the campfire",
+            "category": "4",
+            "f1_score": 0.7272727272727274
+        },
+        {
+            "question": "What workshop did Caroline attend recently?",
+            "answer": "LGBTQ+ counseling workshop",
+            "response": "LGBTQ+ counseling workshop on 23 June, 2023",
+            "category": "4",
+            "f1_score": 0.6
+        },
+        {
+            "question": "What was discussed in the LGBTQ+ counseling workshop?",
+            "answer": "therapeutic methods and how to best work with trans people",
+            "response": "various therapeutic methods and best practices for working with trans individuals",
+            "category": "4",
+            "f1_score": 0.5714285714285713
+        },
+        {
+            "question": "What kind of counseling and mental health services is Caroline interested in pursuing?",
+            "answer": "working with trans people, helping them accept themselves and supporting their mental health",
+            "response": "working with trans people, helping them accept themselves and supporting their mental health",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What motivated Caroline to pursue counseling?",
+            "answer": "her own journey and the support she received, and how counseling improved her life",
+            "response": "her own journey and the support she received",
+            "category": "4",
+            "f1_score": 0.8
+        },
+        {
+            "question": "What book did Caroline recommend to Melanie?",
+            "answer": "\"Becoming Nicole\"",
+            "response": "Becoming Nicole by Amy Ellis Nutt",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What kind of place does Caroline want to create for people?",
+            "answer": "a safe and inviting place for people to grow",
+            "response": "safe and inviting environment for people to grow",
+            "category": "4",
+            "f1_score": 0.823529411764706
+        },
+        {
+            "question": "Did Melanie make the black and white bowl in the photo?",
+            "answer": "Yes",
+            "response": "Yes",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What kind of books does Caroline have in her library?",
+            "answer": "kids' books - classics, stories from different cultures, educational books",
+            "response": "classics, stories from different cultures, educational books",
+            "category": "4",
+            "f1_score": 0.8750000000000001
+        },
+        {
+            "question": "What are the new shoes that Melanie got used for?",
+            "answer": "Running",
+            "response": "running",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What is Melanie's reason for getting into running?",
+            "answer": "To de-stress and clear her mind",
+            "response": "to de-stress and clear her mind",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What was Melanie's favorite book from her childhood?",
+            "answer": "\"Charlotte's Web\"",
+            "response": "Charlotte's Web",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What did Caroline take away from the book \"Becoming Nicole\"?",
+            "answer": "Lessons on self-acceptance and finding support",
+            "response": "self-acceptance, how to find support, that tough times don't last, hope and love exist",
+            "category": "4",
+            "f1_score": 0.3
+        },
+        {
+            "question": "What did Mel and her kids make during the pottery workshop?",
+            "answer": "pots",
+            "response": "their own pots",
+            "category": "4",
+            "f1_score": 0.5
+        },
+        {
+            "question": "What does Melanie say running has been great for?",
+            "answer": "Her mental health",
+            "response": "destressing and clearing her mind",
+            "category": "4",
+            "f1_score": 0.25
+        },
+        {
+            "question": "What creative project do Mel and her kids do together besides pottery?",
+            "answer": "painting",
+            "response": "painting nature-inspired art",
+            "category": "4",
+            "f1_score": 0.5
+        },
+        {
+            "question": "What kind of pot did Mel and her kids make with clay?",
+            "answer": "a cup with a dog face on it",
+            "response": "their own pots",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What did Mel and her kids paint in their latest project in July 2023?",
+            "answer": "a sunset with a palm tree",
+            "response": "nature-inspired painting",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What do sunflowers represent according to Caroline?",
+            "answer": "warmth and happiness",
+            "response": "warmth and happiness",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What did Caroline see at the council meeting for adoption?",
+            "answer": "many people wanting to create loving homes for children in need",
+            "response": "so many people wanting to create loving homes for children in need",
+            "category": "4",
+            "f1_score": 0.9565217391304348
+        },
+        {
+            "question": "What inspired Caroline's painting for the art show?",
+            "answer": "visiting an LGBTQ center and wanting to capture unity and strength",
+            "response": "visit to an LGBTQ center",
+            "category": "4",
+            "f1_score": 0.5333333333333333
+        },
+        {
+            "question": "How often does Melanie go to the beach with her kids?",
+            "answer": "once or twice a year",
+            "response": "once or twice a year",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Why are flowers important to Melanie?",
+            "answer": "They remind her to appreciate the small moments and were a part of her wedding decor",
+            "response": "Flowers bring joy, represent growth and beauty, remind her to appreciate small moments, and were an important part of her wedding decor",
+            "category": "4",
+            "f1_score": 0.6857142857142857
+        },
+        {
+            "question": "What did Melanie and her family see during their camping trip last year?",
+            "answer": "Perseid meteor shower",
+            "response": "Perseid meteor shower",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Whose birthday did Melanie celebrate recently?",
+            "answer": "Melanie's daughter",
+            "response": "her daughter's birthday on 13 August, 2023",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "How did Melanie feel while watching the meteor shower?",
+            "answer": "in awe of the universe",
+            "response": "amazed, in awe of the universe, felt tiny, part of something huge and awe-inspiring",
+            "category": "4",
+            "f1_score": 0.5555555555555556
+        },
+        {
+            "question": "Who performed at the concert at Melanie's daughter's birthday?",
+            "answer": "Matt Patterson",
+            "response": "Matt Patterson",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Why did Melanie choose to use colors and patterns in her pottery project?",
+            "answer": "She wanted to catch the eye and make people smile.",
+            "response": "She is obsessed with colors and patterns, and she wanted to catch the eye and make people smile",
+            "category": "4",
+            "f1_score": 0.8
+        },
+        {
+            "question": "What pet does Caroline have?",
+            "answer": "guinea pig",
+            "response": "guinea pig named Oscar",
+            "category": "4",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "What activity did Caroline used to do with her dad?",
+            "answer": "Horseback riding",
+            "response": "horseback riding",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "What pets does Melanie have?",
+            "answer": "Two cats and a dog",
+            "response": "dog named Luna and cats named Oliver and Bailey",
+            "category": "4",
+            "f1_score": 0.5
+        },
+        {
+            "question": "Where did Oliver hide his bone once?",
+            "answer": "In Melanie's slipper",
+            "response": "in her slipper",
+            "category": "4",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "What did Caroline make for a local church?",
+            "answer": "a stained glass window",
+            "response": "stained glass window",
+            "category": "4",
+            "f1_score": 0.8571428571428571
+        },
+        {
+            "question": "What did Caroline find in her neighborhood during her walk?",
+            "answer": "a rainbow sidewalk",
+            "response": "vibrant rainbow sidewalk",
+            "category": "4",
+            "f1_score": 0.6666666666666666
+        },
+        {
+            "question": "Which song motivates Caroline to be courageous?",
+            "answer": "Brave by Sara Bareilles",
+            "response": "Brave by Sara Bareilles",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Which  classical musicians does Melanie enjoy listening to?",
+            "answer": "Bach and Mozart",
+            "response": "Johann Sebastian Bach, Wolfgang Amadeus Mozart",
+            "category": "4",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "Who is Melanie a fan of in terms of modern music?",
+            "answer": "Ed Sheeran",
+            "response": "Ed Sheeran",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
+            "question": "How long has Melanie been creating art?",
+            "answer": "7 years",
+            "response": "Seven years",
+            "category": "4",
+            "f1_score": 0.5
+        },
+        {
+            "question": "What precautionary sign did Melanie see at the caf\u00e9?",
+            "answer": "A sign stating that someone is not being able to leave",
+            "response": "thoughtful sign",
+            "category": "4",
+            "f1_score": 0.15384615384615385
+        },
+        {
+            "question": "What setback did Melanie face in October 2023?",
+            "answer": "She got hurt and had to take a break from pottery.",
+            "response": "Melanie got hurt and had to take a break from pottery",
+            "category": "4",
+            "f1_score": 0.9090909090909091
+        },
+        {
+            "question": "What painting did Melanie show to Caroline on October 13, 2023?",
+            "answer": "A painting inspired by sunsets with a pink sky.",
+            "response": "sunset-inspired painting",
+            "category": "4",
+            "f1_score": 0.2
+        },
+        {
+            "question": "What advice does Caroline give for getting started with adoption?",
+            "answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+            "response": "Do your research and find an adoption agency or lawyer, gather documents like references, financial info and medical checks, and prepare emotionally for the wait",
+            "category": "4",
+            "f1_score": 0.7027027027027025
+        },
+        {
+            "question": "What kind of painting did Caroline share with Melanie on October 13, 2023?",
+            "answer": "An abstract painting with blue streaks on a wall.",
+            "response": "abstract painting",
+            "category": "4",
+            "f1_score": 0.3636363636363636
+        },
+        {
+            "question": "What does Melanie do to keep herself busy during her pottery break?",
+            "answer": "Read a book and paint.",
+            "response": "reading a book recommended by Caroline and painting",
+            "category": "4",
+            "f1_score": 0.4615384615384615
+        },
+        {
+            "question": "What did the posters at the poetry reading say?",
+            "answer": "\"Trans Lives Matter\"",
+            "response": "posters displayed pride and strength",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What was the poetry reading that Caroline attended about?",
+            "answer": "It was a transgender poetry reading where transgender people shared their stories.",
+            "response": "transgender individuals sharing their stories through poetry",
+            "category": "4",
+            "f1_score": 0.4444444444444444
+        },
+        {
+            "question": "What happened to Melanie's son on their road trip?",
+            "answer": "He got into an accident",
+            "response": "He was in an accident",
+            "category": "4",
+            "f1_score": 0.6
+        },
+        {
+            "question": "How do Melanie and Caroline describe their journey through life together?",
+            "answer": "An ongoing adventure of learning and growing.",
+            "response": "They describe it as an ongoing adventure of learning and exploring, and they are glad to be on this trip together",
+            "category": "4",
+            "f1_score": 0.46153846153846156
+        },
+        {
+            "question": "What does Caroline's drawing symbolize for her?",
+            "answer": "Freedom and being true to herself.",
+            "response": "freedom and authenticity, a reminder to stay true to herself and embrace her womanhood",
+            "category": "4",
+            "f1_score": 0.5555555555555556
+        },
+        {
+            "question": "How did Melanie's son handle the accident?",
+            "answer": "He was scared but reassured by his family",
+            "response": "He was scared but was reassured and is okay",
+            "category": "4",
+            "f1_score": 0.625
+        },
+        {
+            "question": "How did Melanie feel about her family after the accident?",
+            "answer": "They are important and mean the world to her",
+            "response": "family is super important, means the world to her, and they are her biggest motivation, support, and rock",
+            "category": "4",
+            "f1_score": 0.64
+        },
+        {
+            "question": "How did Melanie's children handle the accident?",
+            "answer": "They were scared but resilient",
+            "response": "scared but reassured and tough",
+            "category": "4",
+            "f1_score": 0.4000000000000001
+        },
+        {
+            "question": "What was Melanie's reaction to her children enjoying the Grand Canyon?",
+            "answer": "She was happy and thankful",
+            "response": "thankful and thought her children enjoyed the Grand Canyon a lot",
+            "category": "4",
+            "f1_score": 0.25000000000000006
+        },
+        {
+            "question": "How did Melanie feel after the accident?",
+            "answer": "Grateful and thankful for her family",
+            "response": "scared, then thankful and reflective",
+            "category": "4",
+            "f1_score": 0.3636363636363636
+        },
+        {
+            "question": "What do Melanie's family give her?",
+            "answer": "Strength and motivation",
+            "response": "motivation, support, strength, joy, love, peace, happiness",
+            "category": "4",
+            "f1_score": 0.4
+        },
+        {
+            "question": "How did Melanie feel about her family supporting her?",
+            "answer": "She appreciated them a lot",
+            "response": "Melanie felt her family was awesome, supportive, and a real source of love and motivation that helped her through tough times and made hard times easier",
+            "category": "4",
+            "f1_score": 0.07407407407407407
+        },
+        {
+            "question": "What did Melanie do after the road trip to relax?",
+            "answer": "Went on a nature walk or hike",
+            "response": "went on a camping trip with her family",
+            "category": "4",
+            "f1_score": 0.39999999999999997
+        }
+    ],
     "1": [
         {
             "question": "How do Jon and Gina both like to destress?",
@@ -43,23 +1109,9 @@
             "f1_score": 1.0
         },
         {
-            "question": "Which city have both Jean and John visited?",
-            "answer": "Rome",
-            "response": "Rome",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
             "question": "When was Jon in Paris?",
             "answer": "28 January 2023",
             "response": "28 January, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When is Jon's group performing at a festival?",
-            "answer": "February, 2023",
-            "response": "February 2023",
             "category": "2",
             "f1_score": 1.0
         },
@@ -71,11 +1123,25 @@
             "f1_score": 0.8181818181818181
         },
         {
-            "question": "When did Gina get her tattoo?",
-            "answer": "A few years ago",
-            "response": "few years ago",
+            "question": "When is Jon's group performing at a festival?",
+            "answer": "February, 2023",
+            "response": "February 2023",
             "category": "2",
-            "f1_score": 0.8571428571428571
+            "f1_score": 1.0
+        },
+        {
+            "question": "Which city have both Jean and John visited?",
+            "answer": "Rome",
+            "response": "Rome",
+            "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "When did Gina team up with a local artist for some cool designs?",
+            "answer": "February, 2023",
+            "response": "8 February, 2023",
+            "category": "2",
+            "f1_score": 0.8
         },
         {
             "question": "When did Jon start to go to the gym?",
@@ -92,18 +1158,18 @@
             "f1_score": 1.0
         },
         {
+            "question": "When did Gina get her tattoo?",
+            "answer": "A few years ago",
+            "response": "few years ago",
+            "category": "2",
+            "f1_score": 0.8571428571428571
+        },
+        {
             "question": "When did Jon start expanding his studio's social media presence?",
             "answer": "April, 2023",
             "response": "April 2023",
             "category": "2",
             "f1_score": 1.0
-        },
-        {
-            "question": "When did Gina team up with a local artist for some cool designs?",
-            "answer": "February, 2023",
-            "response": "8 February, 2023",
-            "category": "2",
-            "f1_score": 0.8
         },
         {
             "question": "When did Jon host a dance competition?",
@@ -113,11 +1179,11 @@
             "f1_score": 1.0
         },
         {
-            "question": "When did Gina interview for a design internship?",
-            "answer": "10 May, 2023",
-            "response": "10 May, 2023",
-            "category": "2",
-            "f1_score": 1.0
+            "question": "Do Jon and Gina start businesses out of what they love?",
+            "answer": "Yes",
+            "response": "Yes, Jon starts a dance studio and Gina starts an online clothing store",
+            "category": "1",
+            "f1_score": 0.15384615384615385
         },
         {
             "question": "Why did Gina decide to start her own clothing store?",
@@ -134,11 +1200,11 @@
             "f1_score": 1.0
         },
         {
-            "question": "Do Jon and Gina start businesses out of what they love?",
-            "answer": "Yes",
-            "response": "Yes, Jon started a dance studio and Gina started an online clothing store",
-            "category": "1",
-            "f1_score": 0.15384615384615385
+            "question": "When did Gina interview for a design internship?",
+            "answer": "10 May, 2023",
+            "response": "10 May, 2023",
+            "category": "2",
+            "f1_score": 1.0
         },
         {
             "question": "When did Gina get accepted for the design internship?",
@@ -164,44 +1230,16 @@
         {
             "question": "How did Gina promote her clothes store?",
             "answer": "worked with an artist to make unique fashion pieces, made limited-edition sweatshirts, got some new offers and promotions for online store, developed a video presentation showing how to style her pieces",
-            "response": "launched an ad campaign, built a new website, worked with a local artist, collaborated with fashion bloggers and influencers, used social media and advertising",
+            "response": "launched an ad campaign, built a new website, worked with a local artist, collaborated with fashion bloggers and influencers, used social media, developed a video presentation",
             "category": "1",
-            "f1_score": 0.32
-        },
-        {
-            "question": "Did Jon and Gina both participate in dance competitions?",
-            "answer": "Yes",
-            "response": "Yes",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Jon receive mentorship to promote his venture?",
-            "answer": "15 June, 2023",
-            "response": "15 June, 2023",
-            "category": "2",
-            "f1_score": 1.0
+            "f1_score": 0.4230769230769231
         },
         {
             "question": "Which events has Jon participated in to promote his business venture?",
             "answer": "fair, networking events, dance competition",
-            "response": "attended a fair on 24 April, 2023, performed at a festival on 8 February, 2023, hosted a dance competition in May 2023, attended networking events on 20 June, 2023 and 21 July, 2023, posted dance videos on social media in June 2023",
+            "response": "attended a fair on 24 April, 2023, performed at a festival in February 2023, hosted a dance competition in May 2023, attended networking events on 20 June, 2023 and 21 July, 2023, posted dance videos on social media in June 2023",
             "category": "1",
-            "f1_score": 0.30303030303030304
-        },
-        {
-            "question": "When was Jon in Rome?",
-            "answer": "June 2023",
-            "response": "12 June, 2023",
-            "category": "2",
-            "f1_score": 0.8
-        },
-        {
-            "question": "When Jon is planning to open his dance studio?",
-            "answer": "20 June, 2023",
-            "response": "20 June, 2023",
-            "category": "2",
-            "f1_score": 1.0
+            "f1_score": 0.3125
         },
         {
             "question": "What does Jon's dance studio offer?",
@@ -211,17 +1249,38 @@
             "f1_score": 0.47619047619047616
         },
         {
-            "question": "How long did it take for Jon to open his studio?",
-            "answer": "six months",
-            "response": "20 June, 2023",
-            "category": "1",
-            "f1_score": 0.0
+            "question": "When was Jon in Rome?",
+            "answer": "June 2023",
+            "response": "12 June, 2023",
+            "category": "2",
+            "f1_score": 0.8
+        },
+        {
+            "question": "When did Jon receive mentorship to promote his venture?",
+            "answer": "15 June, 2023",
+            "response": "15 June, 2023",
+            "category": "2",
+            "f1_score": 1.0
         },
         {
             "question": "Which cities has Jon visited?",
             "answer": "Paris, Rome",
             "response": "Rome, Paris",
             "category": "1",
+            "f1_score": 1.0
+        },
+        {
+            "question": "Did Jon and Gina both participate in dance competitions?",
+            "answer": "Yes",
+            "response": "Yes, Jon participated in a local dance competition last year, and Gina participated in regional dance competitions when she was fifteen",
+            "category": "1",
+            "f1_score": 0.10526315789473684
+        },
+        {
+            "question": "When Jon is planning to open his dance studio?",
+            "answer": "20 June, 2023",
+            "response": "20 June, 2023",
+            "category": "2",
             "f1_score": 1.0
         },
         {
@@ -232,18 +1291,18 @@
             "f1_score": 0.8
         },
         {
+            "question": "How long did it take for Jon to open his studio?",
+            "answer": "six months",
+            "response": "20 June, 2023",
+            "category": "1",
+            "f1_score": 0.0
+        },
+        {
             "question": "When did Jon visit networking events for his store?",
             "answer": "20 June, 2023",
             "response": "20 June, 2023",
             "category": "2",
             "f1_score": 1.0
-        },
-        {
-            "question": "When did Jon start learning marketing and analytics tools?",
-            "answer": "July, 2023",
-            "response": "9 July, 2023",
-            "category": "2",
-            "f1_score": 0.8
         },
         {
             "question": "When did Gina start being recognized by fashion editors?",
@@ -260,13 +1319,6 @@
             "f1_score": 1.0
         },
         {
-            "question": "When did Gina mention Shia Labeouf?",
-            "answer": " 23 July, 2023",
-            "response": "23 July, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
             "question": "When did Gina go to a dance class with a group of friends?",
             "answer": "21 July 2023",
             "response": "last Friday",
@@ -274,11 +1326,18 @@
             "f1_score": 0.0
         },
         {
-            "question": "What is Jon's favorite style of dance?",
-            "answer": "Contemporary",
-            "response": "contemporary",
-            "category": "4",
+            "question": "When did Gina mention Shia Labeouf?",
+            "answer": " 23 July, 2023",
+            "response": "23 July, 2023",
+            "category": "2",
             "f1_score": 1.0
+        },
+        {
+            "question": "When did Jon start learning marketing and analytics tools?",
+            "answer": "July, 2023",
+            "response": "9 July, 2023",
+            "category": "2",
+            "f1_score": 0.8
         },
         {
             "question": "What is Gina's favorite style of dance?",
@@ -288,16 +1347,23 @@
             "f1_score": 1.0
         },
         {
-            "question": "What was Gina's favorite dancing memory?",
-            "answer": "Winning first place at a regionals dance competition",
-            "response": "when her team won first place at a regionals at age fifteen",
+            "question": "What is Jon's favorite style of dance?",
+            "answer": "Contemporary",
+            "response": "contemporary",
             "category": "4",
-            "f1_score": 0.5263157894736842
+            "f1_score": 1.0
         },
         {
             "question": "What kind of dance piece did Gina's team perform to win first place?",
             "answer": "\"Finding Freedom\"",
             "response": "contemporary piece called Finding Freedom",
+            "category": "4",
+            "f1_score": 0.0
+        },
+        {
+            "question": "What do the dancers in the photo represent?",
+            "answer": "They are performing at the festival",
+            "response": "Jon's dance crew that won first place in a local competition last year",
             "category": "4",
             "f1_score": 0.0
         },
@@ -316,6 +1382,13 @@
             "f1_score": 0.0
         },
         {
+            "question": "What was Gina's favorite dancing memory?",
+            "answer": "Winning first place at a regionals dance competition",
+            "response": "when her team won first place at a regionals at age fifteen",
+            "category": "4",
+            "f1_score": 0.5263157894736842
+        },
+        {
             "question": "What kind of flooring is Jon looking for in his dance studio?",
             "answer": "Marley flooring",
             "response": "Marley flooring",
@@ -323,9 +1396,9 @@
             "f1_score": 1.0
         },
         {
-            "question": "What do the dancers in the photo represent?",
-            "answer": "They are performing at the festival",
-            "response": "Jon's dance crew that won first place in a local competition last year",
+            "question": "What did Gina find for her clothing store on 1 February, 2023?",
+            "answer": "The perfect spot for her store",
+            "response": "positive reply from a wholesaler",
             "category": "4",
             "f1_score": 0.0
         },
@@ -337,32 +1410,18 @@
             "f1_score": 0.4
         },
         {
-            "question": "What did Gina find for her clothing store on 1 February, 2023?",
-            "answer": "The perfect spot for her store",
-            "response": "positive reply from a wholesaler",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
             "question": "What did Gina want her customers to feel in her store?",
             "answer": "cozy and comfortable",
-            "response": "cozy, invited, like they are in a cool oasis",
+            "response": "cozy, invited, like they're in a cool oasis",
             "category": "4",
-            "f1_score": 0.16666666666666666
+            "f1_score": 0.18181818181818182
         },
         {
             "question": "What did Jon say about Gina's progress with her store?",
             "answer": "hard work's paying off",
-            "response": "Jon said Gina's store is growing and looks great, and he congratulated her on finding the perfect spot and expanding her clothing store",
+            "response": "Jon said Gina's store is doing great, looks great, and her hard work is paying off",
             "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What made Gina choose the furniture and decor for her store?",
-            "answer": "personal style and customer comfort",
-            "response": "She wanted the store to look like her own style and make customers feel cozy, choosing furniture that looks great and is comfortable, with a chandelier for a glam feel",
-            "category": "4",
-            "f1_score": 0.125
+            "f1_score": 0.3333333333333333
         },
         {
             "question": "What did Jon say about creating a special experience for customers?",
@@ -372,6 +1431,13 @@
             "f1_score": 0.7142857142857143
         },
         {
+            "question": "What made Gina choose the furniture and decor for her store?",
+            "answer": "personal style and customer comfort",
+            "response": "She wanted the store to look like her own style and make customers feel cozy, choosing furniture that looks great and is comfortable, with a chandelier for a glam feel",
+            "category": "4",
+            "f1_score": 0.125
+        },
+        {
             "question": "What did Gina say about creating an experience for her customers?",
             "answer": "making them want to come back",
             "response": "She wanted to make her spot comfortable and inviting like a cool oasis to make customers want to come back",
@@ -379,18 +1445,11 @@
             "f1_score": 0.3478260869565218
         },
         {
-            "question": "What does Gina's tattoo symbolize?",
-            "answer": "Freedom and expressing herself through dance",
-            "response": "freedom and following passions",
-            "category": "4",
-            "f1_score": 0.4
-        },
-        {
             "question": "How is Gina's store doing?",
             "answer": "The store is doing great.",
-            "response": "doing great, a wild ride, customers love new offers and promotions, seeing more sales, growing customer base, building a new website",
+            "response": "doing great, a wild ride, rewarding, customers love new offers and promotions, seeing more sales, people like her designs, growing customer base, built a new website for orders, loving it",
             "category": "4",
-            "f1_score": 0.16666666666666666
+            "f1_score": 0.12121212121212122
         },
         {
             "question": "What did Jon and Gina compare their entrepreneurial journeys to?",
@@ -400,11 +1459,11 @@
             "f1_score": 0.0
         },
         {
-            "question": "What advice does Gina give to Jon about running a successful business?",
-            "answer": "build relationships with customers, create a strong brand image, stay positive",
-            "response": "stay passionate, focused and resilient, believe in yourself, stay open to learning and improving, remind yourself of successes and progress, have a good support system, think of the big goal, get help from supportive people, dance it out, build relationships with customers, stay positive and motivate others, brand identity is key, make sure yours stands out, use social media and work with influencers, post dance clips or content, collaborate with local influencers or dance communities, network, reach out to",
+            "question": "What does Gina's tattoo symbolize?",
+            "answer": "Freedom and expressing herself through dance",
+            "response": "freedom and following passions",
             "category": "4",
-            "f1_score": 0.2191780821917808
+            "f1_score": 0.4
         },
         {
             "question": "Why did Jon shut down his bank account?",
@@ -412,6 +1471,13 @@
             "response": "to help his business grow",
             "category": "4",
             "f1_score": 0.5
+        },
+        {
+            "question": "What advice does Gina give to Jon about running a successful business?",
+            "answer": "build relationships with customers, create a strong brand image, stay positive",
+            "response": "stay passionate, focused and resilient, believe in yourself, stay open to learning and improving, remind yourself of successes and progress, have a good support system, think of the big goal, get help from supportive people, dance it out, build relationships with customers, create a strong brand image, stay positive, use social media, collaborate with influencers, network, reach out to people in your field for help and contacts",
+            "category": "4",
+            "f1_score": 0.34375000000000006
         },
         {
             "question": "What did Gina receive from a dance contest?",
@@ -423,9 +1489,9 @@
         {
             "question": "What does Jon's dance make him?",
             "answer": "happy",
-            "response": "happy, express himself, find his happy place, escape to be himself, find freedom, bring him joy and fulfillment, bring people together, create meaningful moments, feel most alive, a must-have in his life",
+            "response": "happy, express himself, find his happy place, escape to be himself, most alive, a must-have in his life",
             "category": "4",
-            "f1_score": 0.07142857142857142
+            "f1_score": 0.125
         },
         {
             "question": "Why did Gina combine her clothing business with dance?",
@@ -435,13 +1501,6 @@
             "f1_score": 0.5
         },
         {
-            "question": "How does Gina stay confident in her business?",
-            "answer": "By reminding herself of her successes and progress, having a support system, and focusing on why she started",
-            "response": "reminds herself of her successes and progress, has a good support system",
-            "category": "4",
-            "f1_score": 0.6206896551724139
-        },
-        {
             "question": "What kind of professional experience did Gina get accepted for on May 23, 2023?",
             "answer": "fashion internship",
             "response": "part-time fashion internship in the fashion department of an international company",
@@ -449,11 +1508,11 @@
             "f1_score": 0.33333333333333337
         },
         {
-            "question": "Where is Gina's fashion internship?",
-            "answer": "fashion department of an international company",
-            "response": "fashion department of an international company",
+            "question": "How does Gina stay confident in her business?",
+            "answer": "By reminding herself of her successes and progress, having a support system, and focusing on why she started",
+            "response": "reminds herself of her successes and progress, has a good support system",
             "category": "4",
-            "f1_score": 1.0
+            "f1_score": 0.6206896551724139
         },
         {
             "question": "What book is Jon currently reading?",
@@ -463,11 +1522,25 @@
             "f1_score": 0.8
         },
         {
+            "question": "Where is Gina's fashion internship?",
+            "answer": "fashion department of an international company",
+            "response": "fashion department of an international company",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
             "question": "What is Jon offering to the dancers at his dance studio?",
             "answer": "One-on-one mentoring and training",
             "response": "dance classes, workshops, one-on-one mentoring and training",
             "category": "4",
             "f1_score": 0.7272727272727273
+        },
+        {
+            "question": "How does Jon use the clipboard with a notepad attached to it?",
+            "answer": "To set goals, track achievements, and find areas for improvement",
+            "response": "Jon uses the clipboard with a notepad attached to write down all his plans and goals",
+            "category": "4",
+            "f1_score": 0.23076923076923075
         },
         {
             "question": "What does Jon tell Gina he won't do?",
@@ -477,11 +1550,11 @@
             "f1_score": 0.0
         },
         {
-            "question": "How does Jon use the clipboard with a notepad attached to it?",
-            "answer": "To set goals, track achievements, and find areas for improvement",
-            "response": "Jon uses the clipboard with a notepad attached to write down all his plans and track his goals",
+            "question": "What is Jon working on opening?",
+            "answer": "a dance studio",
+            "response": "dance studio",
             "category": "4",
-            "f1_score": 0.29629629629629634
+            "f1_score": 0.8
         },
         {
             "question": "What did Jon take a trip to Rome for?",
@@ -491,25 +1564,11 @@
             "f1_score": 1.0
         },
         {
-            "question": "What is Jon working on opening?",
-            "answer": "a dance studio",
-            "response": "dance studio",
-            "category": "4",
-            "f1_score": 0.8
-        },
-        {
             "question": "How does Gina describe the studio that Jon has opened?",
             "answer": "amazing",
             "response": "amazing",
             "category": "4",
             "f1_score": 1.0
-        },
-        {
-            "question": "How does Jon feel about the opening night of his dance studio?",
-            "answer": "excited",
-            "response": "excited and ready to savor the good vibes",
-            "category": "4",
-            "f1_score": 0.2222222222222222
         },
         {
             "question": "How does Gina describe the feeling that dance brings?",
@@ -533,9 +1592,23 @@
             "f1_score": 0.0
         },
         {
+            "question": "How does Jon feel about the opening night of his dance studio?",
+            "answer": "excited",
+            "response": "excited and ready to savor the good vibes",
+            "category": "4",
+            "f1_score": 0.2222222222222222
+        },
+        {
+            "question": "According to Gina, what makes Jon a perfect mentor and guide?",
+            "answer": "His positivity and determination",
+            "response": "his positivity and determination",
+            "category": "4",
+            "f1_score": 1.0
+        },
+        {
             "question": "What is the general sentiment about the upcoming grand opening?",
             "answer": "excitement",
-            "response": "excited, proud, looking forward to making memories",
+            "response": "excited, proud, supportive, looking forward to making memories",
             "category": "4",
             "f1_score": 0.0
         },
@@ -547,11 +1620,11 @@
             "f1_score": 0.0
         },
         {
-            "question": "According to Gina, what makes Jon a perfect mentor and guide?",
-            "answer": "His positivity and determination",
-            "response": "his positivity and determination",
+            "question": "What plans does Jon have after receiving advice at the networking event?",
+            "answer": "Sprucing up his business plan, tweaking his pitch to investors, and working on an online platform.",
+            "response": "sprucing up his business plan, tweaking his pitch to investors, developing an online platform to showcase the dance studio's offerings",
             "category": "4",
-            "f1_score": 1.0
+            "f1_score": 0.7272727272727272
         },
         {
             "question": "What offer does Gina make to Jon regarding social media?",
@@ -559,1079 +1632,6 @@
             "response": "to help with making content and managing his social media accounts",
             "category": "4",
             "f1_score": 0.8571428571428572
-        },
-        {
-            "question": "What plans does Jon have after receiving advice at the networking event?",
-            "answer": "Sprucing up his business plan, tweaking his pitch to investors, and working on an online platform.",
-            "response": "sprucing up his business plan, tweaking his pitch to investors, developing an online platform to showcase the dance studio",
-            "category": "4",
-            "f1_score": 0.7500000000000001
-        }
-    ],
-    "0": [
-        {
-            "question": "What fields would Caroline be likely to pursue in her educaton?",
-            "answer": "Psychology, counseling certification",
-            "response": "Counseling, mental health, LGBTQ+ support, transgender advocacy",
-            "category": "3",
-            "f1_score": 0.2
-        },
-        {
-            "question": "When did Melanie paint a sunrise?",
-            "answer": "2022",
-            "response": "May 2022",
-            "category": "2",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What is Caroline's identity?",
-            "answer": "Transgender woman",
-            "response": "transgender woman",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What did Caroline research?",
-            "answer": "Adoption agencies",
-            "response": "counseling and mental health career options",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "When did Caroline go to the LGBTQ support group?",
-            "answer": "7 May 2023",
-            "response": "7 May, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Melanie run a charity race?",
-            "answer": "The sunday before 25 May 2023",
-            "response": "20 May, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "What is Caroline's relationship status?",
-            "answer": "Single",
-            "response": "single",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Caroline give a speech at a school?",
-            "answer": "The week before 9 June 2023",
-            "response": "2 June, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "When is Melanie planning on going camping?",
-            "answer": "June 2023",
-            "response": "June 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Caroline meet up with her friends, family, and mentors?",
-            "answer": "The week before 9 June 2023",
-            "response": "last week on 2 June, 2023",
-            "category": "2",
-            "f1_score": 0.5
-        },
-        {
-            "question": "How long has Caroline had her current group of friends for?",
-            "answer": "4 years",
-            "response": "4 years",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Where did Caroline move from 4 years ago?",
-            "answer": "Sweden",
-            "response": "Sweden",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "How long ago was Caroline's 18th birthday?",
-            "answer": "10 years ago",
-            "response": "10 years ago",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What career path has Caroline decided to persue?",
-            "answer": "counseling or mental health for Transgender people",
-            "response": "counseling and mental health",
-            "category": "1",
-            "f1_score": 0.5454545454545454
-        },
-        {
-            "question": "What activities does Melanie partake in?",
-            "answer": "pottery, camping, painting, swimming",
-            "response": "pottery, painting, camping, hiking, running, reading, playing violin, playing clarinet, volunteering, charity races, family outings, museum visits, beach trips, concerts, attending workshops",
-            "category": "1",
-            "f1_score": 0.24
-        },
-        {
-            "question": "When did Melanie sign up for a pottery class?",
-            "answer": "2 July 2023",
-            "response": "30 June, 2023",
-            "category": "2",
-            "f1_score": 0.3333333333333333
-        },
-        {
-            "question": "When is Caroline going to the transgender conference?",
-            "answer": "July 2023",
-            "response": "July 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Would Caroline still want to pursue counseling as a career if she hadn't received support growing up?",
-            "answer": "Likely no",
-            "response": "Likely no, her own struggles and support received motivated her",
-            "category": "3",
-            "f1_score": 0.3636363636363636
-        },
-        {
-            "question": "Where has Melanie camped?",
-            "answer": "beach, mountains, forest",
-            "response": "mountains, forest, beach",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What do Melanie's kids like?",
-            "answer": "dinosaurs, nature",
-            "response": "nature, pottery, painting, dinosaurs, animals, camping, exploring parks, the beach",
-            "category": "1",
-            "f1_score": 0.33333333333333337
-        },
-        {
-            "question": "When did Melanie go to the museum?",
-            "answer": "5 July 2023",
-            "response": "5 July, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Caroline have a picnic?",
-            "answer": "The week before 6 July 2023",
-            "response": "previous week before 6 July, 2023",
-            "category": "2",
-            "f1_score": 0.8333333333333334
-        },
-        {
-            "question": "What books has Melanie read?",
-            "answer": "\"Nothing is Impossible\", \"Charlotte's Web\"",
-            "response": "book recommended by Caroline, Charlotte's Web, a book that inspired her to always pursue her dreams",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "Would Caroline likely have Dr. Seuss books on her bookshelf?",
-            "answer": "Yes, since she collects classic children's books",
-            "response": "Likely yes, she is creating a library for kids with classics",
-            "category": "3",
-            "f1_score": 0.2222222222222222
-        },
-        {
-            "question": "What does Melanie do to destress?",
-            "answer": "Running, pottery",
-            "response": "pottery, painting, playing clarinet, running, spending time in nature, reading, playing violin",
-            "category": "1",
-            "f1_score": 0.3076923076923077
-        },
-        {
-            "question": "When did Caroline go to the LGBTQ conference?",
-            "answer": "10 July 2023",
-            "response": "10 July, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Melanie read the book \"nothing is impossible\"?",
-            "answer": "2022",
-            "response": "Last year",
-            "category": "2",
-            "f1_score": 0.0
-        },
-        {
-            "question": "When did Caroline go to the adoption meeting?",
-            "answer": "The friday before 15 July 2023",
-            "response": "14 July, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "Would Caroline pursue writing as a career option?",
-            "answer": "LIkely no; though she likes reading, she wants to be a counselor",
-            "response": "No, she is exploring counseling and mental health",
-            "category": "3",
-            "f1_score": 0.10526315789473685
-        },
-        {
-            "question": "When did Melanie go to the pottery workshop?",
-            "answer": "The Friday before 15 July 2023",
-            "response": "15 July, 2023",
-            "category": "2",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "Would Melanie be considered a member of the LGBTQ community?",
-            "answer": "Likely no, she does not refer to herself as part of it",
-            "response": "No, no mention of her being LGBTQ",
-            "category": "3",
-            "f1_score": 0.2222222222222222
-        },
-        {
-            "question": "When did Melanie go camping in June?",
-            "answer": "The week before 27 June 2023",
-            "response": "20 June, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "When did Caroline go to a pride parade during the summer?",
-            "answer": "The week before 3 July 2023",
-            "response": "24 June, 2023",
-            "category": "2",
-            "f1_score": 0.2222222222222222
-        },
-        {
-            "question": "What events has Caroline participated in to help children?",
-            "answer": "Mentoring program, school speech",
-            "response": "joined a mentorship program for LGBTQ youth, volunteered at an LGBTQ+ youth center, helped put together a talent show for kids",
-            "category": "1",
-            "f1_score": 0.0909090909090909
-        },
-        {
-            "question": "When did Melanie go camping in July?",
-            "answer": "two weekends before 17 July 2023",
-            "response": "3 July, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "When did Caroline join a mentorship program?",
-            "answer": "The weekend before 17 July 2023",
-            "response": "July 2023",
-            "category": "2",
-            "f1_score": 0.5
-        },
-        {
-            "question": "What LGBTQ+ events has Caroline participated in?",
-            "answer": "Pride parade, school speech, support group",
-            "response": "transgender poetry reading on 6 October 2023, LGBTQ+ counseling workshop on 23 June 2023, LGBTQ+ pride parade on 26 June 2023, LGBTQ support group on 7 May 2023, LGBTQ conference on 10 July 2023, school talk on 2 June 2023, mentorship program for LGBTQ youth, LGBTQ art show in September 2023, volunteer at LGBTQ+ youth center in August 2023, LGBTQ activist",
-            "category": "1",
-            "f1_score": 0.2222222222222222
-        },
-        {
-            "question": "What did Melanie paint recently?",
-            "answer": "sunset",
-            "response": "sunset-inspired painting, an abstract painting, a horse painting",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "How many times has Melanie gone to the beach in 2023?",
-            "answer": "2",
-            "response": "once or twice",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "In what ways is Caroline participating in the LGBTQ community?",
-            "answer": "Joining activist group, going to pride parades, participating in an art show, mentoring program",
-            "response": "attended a transgender poetry reading, attended an LGBTQ+ pride parade, attended an LGBTQ+ counseling workshop, attended an LGBTQ conference, gave a talk at a school event, joined a mentorship program for LGBTQ youth, joined an LGBTQ activist group, volunteered at an LGBTQ+ youth center, organizing an LGBTQ art show",
-            "category": "1",
-            "f1_score": 0.3181818181818182
-        },
-        {
-            "question": "When did Caroline join a new activist group?",
-            "answer": "The Tuesday before 20 July 2023",
-            "response": "18 July, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "What activities has Melanie done with her family?",
-            "answer": "Pottery, painting, camping, museum, swimming, hiking",
-            "response": "camping in the mountains on 27 June 2023, a pottery workshop on 14 July 2023, hiking and exploring forests, volunteering at a homeless shelter on 24 August 2023, a museum trip on 5 July 2023, camping at the beach, a road trip to the Grand Canyon, a camping trip on 19 October 2023",
-            "category": "1",
-            "f1_score": 0.20512820512820512
-        },
-        {
-            "question": "Would Melanie be more interested in going to a national park or a theme park?",
-            "answer": "National park; she likes the outdoors",
-            "response": "National park, because she loves nature, camping, and hiking with her family",
-            "category": "3",
-            "f1_score": 0.2222222222222222
-        },
-        {
-            "question": "What kind of art does Caroline make?",
-            "answer": "abstract art",
-            "response": "paintings, drawings, abstract art, self-portraits, stained glass, art representing her trans experience and identity",
-            "category": "1",
-            "f1_score": 0.2666666666666667
-        },
-        {
-            "question": "When is Melanie's daughter's birthday?",
-            "answer": "13 August",
-            "response": "13 August, 2023",
-            "category": "2",
-            "f1_score": 0.8
-        },
-        {
-            "question": "Would Melanie be considered an ally to the transgender community?",
-            "answer": "Yes, she is supportive",
-            "response": "Yes, she expresses support, admiration, and pride for Caroline's transgender journey and advocacy",
-            "category": "3",
-            "f1_score": 0.25
-        },
-        {
-            "question": "When did Caroline attend a pride parade in August?",
-            "answer": "The Friday before 14 August 2023",
-            "response": "11 August, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "Who supports Caroline when she has a negative experience?",
-            "answer": "Her mentors, family, and friends",
-            "response": "friends, family, and mentors",
-            "category": "1",
-            "f1_score": 0.888888888888889
-        },
-        {
-            "question": "What types of pottery have Melanie and her kids made?",
-            "answer": "bowls, cup",
-            "response": "pots, a cup, a bowl, a plate",
-            "category": "1",
-            "f1_score": 0.28571428571428575
-        },
-        {
-            "question": "When did Caroline and Melanie go to a pride fesetival together?",
-            "answer": "2022",
-            "response": "August 2022",
-            "category": "2",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What would Caroline's political leaning likely be?",
-            "answer": "Liberal",
-            "response": "Progressive/Liberal, passionate about LGBTQ rights and acceptance",
-            "category": "3",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What are Melanie's pets' names?",
-            "answer": "Oliver, Luna, Bailey",
-            "response": "Luna and Oliver",
-            "category": "1",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What has Melanie painted?",
-            "answer": "Horse, sunset, sunrise",
-            "response": "sunset-inspired piece, abstract painting, lake sunrise, nature-inspired painting with children, horse painting, landscapes and still life",
-            "category": "1",
-            "f1_score": 0.23529411764705882
-        },
-        {
-            "question": "When did Caroline apply to adoption agencies?",
-            "answer": "The week of 23 August 2023",
-            "response": "23 August, 2023",
-            "category": "2",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What subject have Caroline and Melanie both painted?",
-            "answer": "Sunsets",
-            "response": "sunset",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "When did Caroline draw a self-portrait?",
-            "answer": "The week before 23 August 2023",
-            "response": "previous week on 23 August, 2023",
-            "category": "2",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "When did Melanie make a plate in pottery class?",
-            "answer": "24 August 2023",
-            "response": "24 August, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What symbols are important to Caroline?",
-            "answer": "Rainbow flag, transgender symbol",
-            "response": "necklace symbolizing love, faith, strength, and roots, the rainbow flag mural representing courage and strength, the eagle symbolizing freedom and pride, blue as a relaxing color, sunflowers for warmth and happiness, roses for love and beauty, and art representing freedom and authenticity",
-            "category": "1",
-            "f1_score": 0.1212121212121212
-        },
-        {
-            "question": "When did Caroline encounter people on a hike and have a negative experience?",
-            "answer": "The week before 25 August 2023",
-            "response": "17 August, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "Would Caroline be considered religious?",
-            "answer": "Somewhat, but not extremely religious",
-            "response": "No, no mention of religious beliefs or practices",
-            "category": "3",
-            "f1_score": 0.16666666666666666
-        },
-        {
-            "question": "What instruments does Melanie play?",
-            "answer": "clarinet and violin",
-            "response": "violin, clarinet",
-            "category": "1",
-            "f1_score": 0.8
-        },
-        {
-            "question": "When did Melanie go to the park?",
-            "answer": "27 August 2023",
-            "response": "27 August, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What musical artists/bands has Melanie seen?",
-            "answer": "Summer Sounds, Matt Patterson",
-            "response": "Matt Patterson, Summer Sounds",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When is Caroline's youth center putting on a talent show?",
-            "answer": "September 2023",
-            "response": "September 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Would Melanie likely enjoy the song \"The Four Seasons\" by Vivaldi?",
-            "answer": "Yes; it's classical music",
-            "response": "Likely yes, she is a fan of classical music like Bach and Mozart",
-            "category": "3",
-            "f1_score": 0.23529411764705882
-        },
-        {
-            "question": "What does Melanie do with her family on hikes?",
-            "answer": "Roast marshmallows, tell stories",
-            "response": "explore nature, roast marshmallows, share stories, go on hikes",
-            "category": "1",
-            "f1_score": 0.46153846153846156
-        },
-        {
-            "question": "When did Caroline go biking with friends?",
-            "answer": "The weekend before 13 September 2023",
-            "response": "weekend prior to 13 September, 2023",
-            "category": "2",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What are some changes Caroline has faced during her transition journey?",
-            "answer": "Changes to her body, losing unsupportive friends",
-            "response": "Caroline's transition changed her relationships, some close friends kept supporting her, some were not able to handle it, she is happier around those who accept and love her, her relationships feel more genuine, she realized she can be herself without fear, she found the courage to transition, she feels it is freeing to express herself authentically, she is proud of who she is",
-            "category": "1",
-            "f1_score": 0.12
-        },
-        {
-            "question": "How long has Melanie been practicing art?",
-            "answer": "Since 2016",
-            "response": "seven years",
-            "category": "2",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What personality traits might Melanie say Caroline has?",
-            "answer": "Thoughtful, authentic, driven",
-            "response": "caring, courageous, passionate, inspiring",
-            "category": "3",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What book did Melanie read from Caroline's suggestion?",
-            "answer": "\"Becoming Nicole\"",
-            "response": "book you recommended a while ago",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "When did Melanie's friend adopt a child?",
-            "answer": "2022",
-            "response": "last year",
-            "category": "2",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What transgender-specific events has Caroline attended?",
-            "answer": "Poetry reading, conference",
-            "response": "transgender poetry reading on 6 October 2023, LGBTQ+ counseling workshop on 23 June 2023, LGBTQ support group on 7 May 2023, LGBT pride event in June 2023, LGBTQ conference on 10 July 2023, school event on 2 June 2023",
-            "category": "1",
-            "f1_score": 0.20689655172413793
-        },
-        {
-            "question": "When did Melanie get hurt?",
-            "answer": "September 2023",
-            "response": "September 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "When did Melanie's family go on a roadtrip?",
-            "answer": "The weekend before 20 October 2023",
-            "response": "15 October, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "How many children does Melanie have?",
-            "answer": "3",
-            "response": "three",
-            "category": "1",
-            "f1_score": 0.0
-        },
-        {
-            "question": "When did Melanie go on a hike after the roadtrip?",
-            "answer": "19 October 2023",
-            "response": "19 October, 2023",
-            "category": "1",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What items has Melanie bought?",
-            "answer": "Figurines, shoes",
-            "response": "figurines, purple running shoes",
-            "category": "1",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "When did Caroline pass the adoption interview?",
-            "answer": "The Friday before 22 October 2023",
-            "response": "20 October, 2023",
-            "category": "2",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "When did Melanie buy the figurines?",
-            "answer": "21 October 2023",
-            "response": "21 October, 2023",
-            "category": "2",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Would Melanie go on another roadtrip soon?",
-            "answer": "Likely no; since this one went badly",
-            "response": "Likely yes, she enjoys family trips and camping",
-            "category": "3",
-            "f1_score": 0.13333333333333333
-        },
-        {
-            "question": "What did the charity race raise awareness for?",
-            "answer": "mental health",
-            "response": "mental health",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Would Caroline want to move back to her home country soon?",
-            "answer": "No; she's in the process of adopting children.",
-            "response": "No, she is focused on adoption and building a family where she is now",
-            "category": "3",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What did Melanie realize after the charity race?",
-            "answer": "self-care is important",
-            "response": "self-care is important and is a journey for her",
-            "category": "4",
-            "f1_score": 0.5454545454545454
-        },
-        {
-            "question": "What are Caroline's plans for the summer?",
-            "answer": "researching adoption agencies",
-            "response": "planning a special outing with Melanie, attending a transgender conference in July, and organizing an LGBTQ art show in September",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "How does Melanie prioritize self-care?",
-            "answer": "by carving out some me-time each day for activities like running, reading, or playing the violin",
-            "response": "carves out daily me-time for running, reading, or playing the violin, prioritizes mental health through running, and finds peace through creativity and family",
-            "category": "4",
-            "f1_score": 0.5
-        },
-        {
-            "question": "Why did Caroline choose the adoption agency?",
-            "answer": "because of their inclusivity and support for LGBTQ+ individuals",
-            "response": "specializes in helping LGBTQ+ individuals, inclusivity and support for the community",
-            "category": "4",
-            "f1_score": 0.6
-        },
-        {
-            "question": "What type of individuals does the adoption agency Caroline is considering support?",
-            "answer": "LGBTQ+ individuals",
-            "response": "LGBTQ+ individuals",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What is Caroline excited about in the adoption process?",
-            "answer": "creating a family for kids who need one",
-            "response": "passing the adoption agency interviews on 22 October, 2023",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "How long have Mel and her husband been married?",
-            "answer": "Mel and her husband have been married for 5 years.",
-            "response": "5 years",
-            "category": "4",
-            "f1_score": 0.33333333333333337
-        },
-        {
-            "question": "What does Melanie think about Caroline's decision to adopt?",
-            "answer": "she thinks Caroline is doing something amazing and will be an awesome mom",
-            "response": "Melanie thinks it's awesome, amazing, and inspiring, and she congratulated Caroline, expressed admiration for her kindness, and said her future family will be lucky to have her",
-            "category": "4",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "What does Caroline's necklace symbolize?",
-            "answer": "love, faith, and strength",
-            "response": "love, faith, strength, and her roots",
-            "category": "4",
-            "f1_score": 0.8
-        },
-        {
-            "question": "What country is Caroline's grandma from?",
-            "answer": "Sweden",
-            "response": "Sweden",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What was grandma's gift to Caroline?",
-            "answer": "necklace",
-            "response": "necklace",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What is Melanie's hand-painted bowl a reminder of?",
-            "answer": "art and self-expression",
-            "response": "art and self-expression",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What did Melanie and her family do while camping?",
-            "answer": "explored nature, roasted marshmallows, and went on a hike",
-            "response": "explored nature, roasted marshmallows, went on a hike",
-            "category": "4",
-            "f1_score": 0.9411764705882353
-        },
-        {
-            "question": "What kind of counseling and mental health services is Caroline interested in pursuing?",
-            "answer": "working with trans people, helping them accept themselves and supporting their mental health",
-            "response": "working with trans people, helping them accept themselves and supporting their mental health",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What workshop did Caroline attend recently?",
-            "answer": "LGBTQ+ counseling workshop",
-            "response": "LGBTQ+ counseling workshop on 23 June, 2023",
-            "category": "4",
-            "f1_score": 0.6
-        },
-        {
-            "question": "What motivated Caroline to pursue counseling?",
-            "answer": "her own journey and the support she received, and how counseling improved her life",
-            "response": "her own journey and the support she received",
-            "category": "4",
-            "f1_score": 0.8
-        },
-        {
-            "question": "What was discussed in the LGBTQ+ counseling workshop?",
-            "answer": "therapeutic methods and how to best work with trans people",
-            "response": "various therapeutic methods and best practices for working with trans individuals",
-            "category": "4",
-            "f1_score": 0.5714285714285713
-        },
-        {
-            "question": "What kind of place does Caroline want to create for people?",
-            "answer": "a safe and inviting place for people to grow",
-            "response": "safe and inviting environment for people to grow",
-            "category": "4",
-            "f1_score": 0.823529411764706
-        },
-        {
-            "question": "What kind of books does Caroline have in her library?",
-            "answer": "kids' books - classics, stories from different cultures, educational books",
-            "response": "classics, stories from different cultures, educational books",
-            "category": "4",
-            "f1_score": 0.8750000000000001
-        },
-        {
-            "question": "What was Melanie's favorite book from her childhood?",
-            "answer": "\"Charlotte's Web\"",
-            "response": "Charlotte's Web",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "Did Melanie make the black and white bowl in the photo?",
-            "answer": "Yes",
-            "response": "Yes",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What book did Caroline recommend to Melanie?",
-            "answer": "\"Becoming Nicole\"",
-            "response": "Becoming Nicole by Amy Ellis Nutt",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What are the new shoes that Melanie got used for?",
-            "answer": "Running",
-            "response": "running",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What did Mel and her kids make during the pottery workshop?",
-            "answer": "pots",
-            "response": "their own pots",
-            "category": "4",
-            "f1_score": 0.5
-        },
-        {
-            "question": "What did Caroline take away from the book \"Becoming Nicole\"?",
-            "answer": "Lessons on self-acceptance and finding support",
-            "response": "self-acceptance, how to find support, hope and love exist",
-            "category": "4",
-            "f1_score": 0.4
-        },
-        {
-            "question": "What is Melanie's reason for getting into running?",
-            "answer": "To de-stress and clear her mind",
-            "response": "to de-stress and clear her mind",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What does Melanie say running has been great for?",
-            "answer": "Her mental health",
-            "response": "destressing and clearing her mind",
-            "category": "4",
-            "f1_score": 0.25
-        },
-        {
-            "question": "What did Mel and her kids paint in their latest project in July 2023?",
-            "answer": "a sunset with a palm tree",
-            "response": "nature-inspired painting",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What kind of pot did Mel and her kids make with clay?",
-            "answer": "a cup with a dog face on it",
-            "response": "their own pots",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What did Caroline see at the council meeting for adoption?",
-            "answer": "many people wanting to create loving homes for children in need",
-            "response": "so many people wanting to create loving homes for children in need",
-            "category": "4",
-            "f1_score": 0.9565217391304348
-        },
-        {
-            "question": "What do sunflowers represent according to Caroline?",
-            "answer": "warmth and happiness",
-            "response": "warmth and happiness",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What inspired Caroline's painting for the art show?",
-            "answer": "visiting an LGBTQ center and wanting to capture unity and strength",
-            "response": "visit to an LGBTQ center",
-            "category": "4",
-            "f1_score": 0.5333333333333333
-        },
-        {
-            "question": "Why are flowers important to Melanie?",
-            "answer": "They remind her to appreciate the small moments and were a part of her wedding decor",
-            "response": "Flowers bring joy, represent growth and beauty, remind her to appreciate small moments, and were an important part of her wedding decor",
-            "category": "4",
-            "f1_score": 0.6857142857142857
-        },
-        {
-            "question": "What creative project do Mel and her kids do together besides pottery?",
-            "answer": "painting",
-            "response": "painting nature-inspired art",
-            "category": "4",
-            "f1_score": 0.5
-        },
-        {
-            "question": "How often does Melanie go to the beach with her kids?",
-            "answer": "once or twice a year",
-            "response": "once or twice a year",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What did Melanie and her family see during their camping trip last year?",
-            "answer": "Perseid meteor shower",
-            "response": "Perseid meteor shower",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "How did Melanie feel while watching the meteor shower?",
-            "answer": "in awe of the universe",
-            "response": "amazed, in awe of the universe, felt tiny, part of something huge and awe-inspiring",
-            "category": "4",
-            "f1_score": 0.5555555555555556
-        },
-        {
-            "question": "Who performed at the concert at Melanie's daughter's birthday?",
-            "answer": "Matt Patterson",
-            "response": "Matt Patterson",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Whose birthday did Melanie celebrate recently?",
-            "answer": "Melanie's daughter",
-            "response": "her daughter's birthday on 13 August, 2023",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What pet does Caroline have?",
-            "answer": "guinea pig",
-            "response": "guinea pig named Oscar",
-            "category": "4",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "Why did Melanie choose to use colors and patterns in her pottery project?",
-            "answer": "She wanted to catch the eye and make people smile.",
-            "response": "She is obsessed with colors and patterns and wanted to catch the eye and make people smile",
-            "category": "4",
-            "f1_score": 0.8
-        },
-        {
-            "question": "What activity did Caroline used to do with her dad?",
-            "answer": "Horseback riding",
-            "response": "horseback riding",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "What pets does Melanie have?",
-            "answer": "Two cats and a dog",
-            "response": "dog named Luna and cats named Oliver and Bailey",
-            "category": "4",
-            "f1_score": 0.5
-        },
-        {
-            "question": "What did Caroline find in her neighborhood during her walk?",
-            "answer": "a rainbow sidewalk",
-            "response": "vibrant rainbow sidewalk",
-            "category": "4",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What did Caroline make for a local church?",
-            "answer": "a stained glass window",
-            "response": "stained glass window",
-            "category": "4",
-            "f1_score": 0.8571428571428571
-        },
-        {
-            "question": "Which song motivates Caroline to be courageous?",
-            "answer": "Brave by Sara Bareilles",
-            "response": "Brave by Sara Bareilles",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Who is Melanie a fan of in terms of modern music?",
-            "answer": "Ed Sheeran",
-            "response": "Ed Sheeran",
-            "category": "4",
-            "f1_score": 1.0
-        },
-        {
-            "question": "Which  classical musicians does Melanie enjoy listening to?",
-            "answer": "Bach and Mozart",
-            "response": "Johann Sebastian Bach, Wolfgang Amadeus Mozart",
-            "category": "4",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "How long has Melanie been creating art?",
-            "answer": "7 years",
-            "response": "Seven years",
-            "category": "4",
-            "f1_score": 0.5
-        },
-        {
-            "question": "Where did Oliver hide his bone once?",
-            "answer": "In Melanie's slipper",
-            "response": "in her slipper",
-            "category": "4",
-            "f1_score": 0.6666666666666666
-        },
-        {
-            "question": "What precautionary sign did Melanie see at the caf\u00e9?",
-            "answer": "A sign stating that someone is not being able to leave",
-            "response": "thoughtful sign",
-            "category": "4",
-            "f1_score": 0.15384615384615385
-        },
-        {
-            "question": "What setback did Melanie face in October 2023?",
-            "answer": "She got hurt and had to take a break from pottery.",
-            "response": "Melanie got hurt and had to take a break from pottery",
-            "category": "4",
-            "f1_score": 0.9090909090909091
-        },
-        {
-            "question": "What does Melanie do to keep herself busy during her pottery break?",
-            "answer": "Read a book and paint.",
-            "response": "reading a book recommended by Caroline and painting",
-            "category": "4",
-            "f1_score": 0.4615384615384615
-        },
-        {
-            "question": "What advice does Caroline give for getting started with adoption?",
-            "answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
-            "response": "Do your research and find an adoption agency or lawyer, gather documents like references, financial info and medical checks, and prepare emotionally for the wait",
-            "category": "4",
-            "f1_score": 0.7027027027027025
-        },
-        {
-            "question": "What painting did Melanie show to Caroline on October 13, 2023?",
-            "answer": "A painting inspired by sunsets with a pink sky.",
-            "response": "sunset-inspired painting",
-            "category": "4",
-            "f1_score": 0.2
-        },
-        {
-            "question": "What kind of painting did Caroline share with Melanie on October 13, 2023?",
-            "answer": "An abstract painting with blue streaks on a wall.",
-            "response": "abstract painting",
-            "category": "4",
-            "f1_score": 0.3636363636363636
-        },
-        {
-            "question": "What did the posters at the poetry reading say?",
-            "answer": "\"Trans Lives Matter\"",
-            "response": "posters displayed pride and strength",
-            "category": "4",
-            "f1_score": 0.0
-        },
-        {
-            "question": "What does Caroline's drawing symbolize for her?",
-            "answer": "Freedom and being true to herself.",
-            "response": "freedom and authenticity, a reminder to stay true to herself and embrace her womanhood",
-            "category": "4",
-            "f1_score": 0.5555555555555556
-        },
-        {
-            "question": "What was the poetry reading that Caroline attended about?",
-            "answer": "It was a transgender poetry reading where transgender people shared their stories.",
-            "response": "transgender individuals sharing their stories through poetry",
-            "category": "4",
-            "f1_score": 0.4444444444444444
-        },
-        {
-            "question": "What happened to Melanie's son on their road trip?",
-            "answer": "He got into an accident",
-            "response": "He was in an accident",
-            "category": "4",
-            "f1_score": 0.6
-        },
-        {
-            "question": "How do Melanie and Caroline describe their journey through life together?",
-            "answer": "An ongoing adventure of learning and growing.",
-            "response": "They describe it as an ongoing adventure of learning and exploring, and they are glad to be on this trip together",
-            "category": "4",
-            "f1_score": 0.46153846153846156
-        },
-        {
-            "question": "How did Melanie's son handle the accident?",
-            "answer": "He was scared but reassured by his family",
-            "response": "He was scared but was reassured and is okay",
-            "category": "4",
-            "f1_score": 0.625
-        },
-        {
-            "question": "How did Melanie feel about her family after the accident?",
-            "answer": "They are important and mean the world to her",
-            "response": "family is super important, means the world to her, and they are her biggest motivation, support, and rock",
-            "category": "4",
-            "f1_score": 0.64
-        },
-        {
-            "question": "How did Melanie feel after the accident?",
-            "answer": "Grateful and thankful for her family",
-            "response": "scared, then thankful and reflective",
-            "category": "4",
-            "f1_score": 0.3636363636363636
-        },
-        {
-            "question": "How did Melanie's children handle the accident?",
-            "answer": "They were scared but resilient",
-            "response": "scared but reassured and tough",
-            "category": "4",
-            "f1_score": 0.4000000000000001
-        },
-        {
-            "question": "What was Melanie's reaction to her children enjoying the Grand Canyon?",
-            "answer": "She was happy and thankful",
-            "response": "thankful and thought her children enjoyed the Grand Canyon a lot",
-            "category": "4",
-            "f1_score": 0.25000000000000006
-        },
-        {
-            "question": "What do Melanie's family give her?",
-            "answer": "Strength and motivation",
-            "response": "motivation, support, strength, joy, love, peace, happiness",
-            "category": "4",
-            "f1_score": 0.4
-        },
-        {
-            "question": "What did Melanie do after the road trip to relax?",
-            "answer": "Went on a nature walk or hike",
-            "response": "went on a camping trip with her family",
-            "category": "4",
-            "f1_score": 0.39999999999999997
-        },
-        {
-            "question": "How did Melanie feel about her family supporting her?",
-            "answer": "She appreciated them a lot",
-            "response": "Melanie felt her family was awesome, supportive, and a real help during tough times, and she appreciated them a lot",
-            "category": "4",
-            "f1_score": 0.4347826086956522
         }
     ]
 }
