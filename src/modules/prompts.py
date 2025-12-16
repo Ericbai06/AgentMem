@@ -68,7 +68,9 @@ You are a highly intelligent QA Agent. You have access to the COMPLETE conversat
 === INSTRUCTIONS ===
 0. **Output format (STRICT)**:
    - Output ONE single line.
-   - Output ONLY the answer text (no "Answer:", no quotes, no bullets, no markdown, no extra explanation).
+   - Output ONLY the answer text (no "Answer:", no bullets, no markdown, no extra explanation).
+   - Only use double quotes when the answer is a title/slogan/name of a work (books, movies, songs, dance pieces) or when asked for the exact phrase.
+   - Preserve punctuation that may matter for scoring (apostrophes, hyphens, plus signs like LGBTQ+).
    - Avoid parentheses/brackets. Do not include multiple lines.
 
 1. **Date format is CRITICAL**: 
@@ -106,6 +108,9 @@ Q: What items did he buy?
 Bad Answer: groceries
 Good Answer: milk, eggs, bread
 
+Q: What did the posters say?
+Good Answer: "Trans Lives Matter"
+
 === YOUR ANSWER ===
 Output:
 """
@@ -132,7 +137,8 @@ You are a highly intelligent QA Agent. You have access to the COMPLETE conversat
 === INSTRUCTIONS ===
 0. **Output format (STRICT)**:
    - Output ONE single line.
-   - Output ONLY the answer text (no "Answer:", no quotes, no bullets, no markdown, no extra explanation).
+   - Output ONLY the answer text (no "Answer:", no bullets, no markdown, no extra explanation).
+   - Only use double quotes when the answer is a title/slogan/name of a work or when asked for the exact phrase.
 
 1. **Category-3 style**:
    - If the question is Yes/No (e.g., starts with "Would", "Is", "Are", "Did"), answer in one of these forms:
@@ -143,6 +149,46 @@ You are a highly intelligent QA Agent. You have access to the COMPLETE conversat
 
 2. **Extraction over Abstraction**:
    - Use the exact keywords or phrases from the text rather than summarizing into high-level concepts.
+
+=== YOUR ANSWER ===
+Output:
+"""
+
+# Category 4 questions are often direct extraction of a short span from the conversation.
+# Strongly encourage extractive, punctuation-preserving answers (titles/slogans may require quotes).
+ANSWER_PROMPT_CAT4 = """
+You are a highly intelligent QA Agent. You have access to the COMPLETE conversation history and specific retrieved memory highlights.
+
+=== PART 1: COMPLETE CONVERSATION HISTORY ===
+(This is the ground truth timeline of all events)
+{full_history}
+
+=== PART 2: RETRIEVED RAW FRAGMENTS ===
+(These are potential matches from the database, for reference)
+{origin_memories}
+
+=== PART 3: RETRIEVED FACT SUMMARIES ===
+(These are processed facts to help reasoning)
+{process_memories}
+
+=== QUESTION ===
+{question}
+
+=== INSTRUCTIONS ===
+0. **Output format (STRICT)**:
+   - Output ONE single line.
+   - Output ONLY the answer text (no "Answer:", no bullets, no markdown, no extra explanation).
+   - If the answer is a title/slogan/name of a work, wrap it in double quotes exactly (e.g., "Charlotte's Web").
+   - Preserve punctuation exactly when relevant (apostrophes, hyphens, plus signs like LGBTQ+).
+
+1. **Extraction-first (CRITICAL)**:
+   - Copy the shortest span from the conversation that directly answers the question.
+   - Do NOT paraphrase or swap synonyms. Prefer exact wording from the history.
+   - Do NOT add extra framing words (avoid "because", "she said", "it was", etc.) unless they are part of the answer span.
+
+2. **Lists**:
+   - If multiple items are required, separate with commas.
+   - For multiple titles, format as: "Title 1", "Title 2"
 
 === YOUR ANSWER ===
 Output:

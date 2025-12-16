@@ -8,7 +8,7 @@ from tqdm import tqdm
 from openai import OpenAI
 from memos.api.client import MemOSClient
 from .config import Config
-from .prompts import QUERY_REWRITE_PROMPT, ANSWER_PROMPT, ANSWER_PROMPT_CAT3
+from .prompts import QUERY_REWRITE_PROMPT, ANSWER_PROMPT, ANSWER_PROMPT_CAT3, ANSWER_PROMPT_CAT4
 
 class LocomoAgent:
     def __init__(self):
@@ -180,7 +180,12 @@ class LocomoAgent:
         process_str = "\n".join([f"[{m.get('speaker','')}|{m['timestamp']}] {m['content']}" for m in mems_process_all])
         
         # 4. 组装 Super Prompt
-        prompt_template = ANSWER_PROMPT_CAT3 if str(category) == "3" else ANSWER_PROMPT
+        if str(category) == "3":
+            prompt_template = ANSWER_PROMPT_CAT3
+        elif str(category) == "4":
+            prompt_template = ANSWER_PROMPT_CAT4
+        else:
+            prompt_template = ANSWER_PROMPT
         prompt = prompt_template.format(
             full_history=full_history_text,
             origin_memories=origin_str,
