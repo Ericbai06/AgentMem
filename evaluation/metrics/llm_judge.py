@@ -6,7 +6,6 @@ from collections import defaultdict
 import numpy as np
 from openai import OpenAI
 
-from mem0.memory.utils import extract_json
 
 # Dedicated env vars for evaluation to avoid clashing with Qwen runtime settings
 EVAL_API_KEY = os.getenv("EVAL_OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
@@ -59,7 +58,10 @@ def evaluate_llm_judge(question, gold_answer, generated_answer):
         response_format={"type": "json_object"},
         temperature=0.0,
     )
-    label = json.loads(extract_json(response.choices[0].message.content))["label"]
+    # Response is already forced to JSON; handle both string and dict payloads defensively.
+    content = response.choices[0].message.content
+    parsed = content if isinstance(content, dict) else json.loads(content)
+    label = parsed.get("label", "WRONG")
     return 1 if label == "CORRECT" else 0
 
 

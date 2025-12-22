@@ -10,16 +10,6 @@ from memos.api.client import MemOSClient
 from .config import Config
 from .prompts import QUERY_REWRITE_PROMPT, ANSWER_PROMPT, ANSWER_PROMPT_CAT3
 
-LOCOMO_RESPONSE_OVERRIDES = {
-    # Quote-sensitive / format-sensitive items in LOCOMO10 (categories 1 & 4).
-    "What books has Melanie read?": "\"Nothing is Impossible\", \"Charlotte's Web\"",
-    "What book did Melanie read from Caroline's suggestion?": "\"Becoming Nicole\"",
-    "What was Melanie's favorite book from her childhood?": "\"Charlotte's Web\"",
-    "What book did Caroline recommend to Melanie?": "\"Becoming Nicole\"",
-    "What did the posters at the poetry reading say?": "\"Trans Lives Matter\"",
-    "What kind of dance piece did Gina's team perform to win first place?": "\"Finding Freedom\"",
-}
-
 YES_NO_QUESTION_PREFIXES = (
     "is ",
     "are ",
@@ -117,10 +107,6 @@ class LocomoAgent:
         """
         q = str(question or "")
         cat = str(category or "")
-
-        override = LOCOMO_RESPONSE_OVERRIDES.get(q)
-        if override is not None:
-            return override
 
         if cat == "4":
             ql = q.strip().lower()
@@ -261,18 +247,6 @@ class LocomoAgent:
     def process_one_qa(self, qa_item, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name, full_conversation_text):
         question = qa_item["question"]
         category = qa_item.get("category", "")
-
-        override = LOCOMO_RESPONSE_OVERRIDES.get(question)
-        if override is not None:
-            return {
-                "question": question,
-                "answer": qa_item.get("answer", ""),
-                "category": qa_item.get("category", ""),
-                "response": override,
-                "evidence": [],
-                "speaker_1_memories": [],
-                "response_time": 0,
-            }
         
         targets = self._route_targets(question, speaker_a_id, speaker_b_id, spk_a_name, spk_b_name)
 

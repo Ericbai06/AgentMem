@@ -7,9 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dotenv import load_dotenv
 from tqdm import tqdm
 
-# from mem0 import MemoryClient
-from memos.api.client import MemOSClient
-from src.preprocess import ConversationPreprocessor
+from mem0 import MemoryClient
 
 load_dotenv()
 
@@ -46,12 +44,13 @@ Generate personal memories that follow these guidelines:
 
 class MemoryADD:
     def __init__(self, data_path=None, batch_size=2, is_graph=False):
-        self.client = MemOSClient(
-            api_key=os.getenv("MEMOS_API_KEY")
+        self.mem0_client = MemoryClient(
+            api_key=os.getenv("MEM0_API_KEY"),
+            org_id=os.getenv("MEM0_ORGANIZATION_ID"),
+            project_id=os.getenv("MEM0_PROJECT_ID"),
         )
-        self.preprocessor = ConversationPreprocessor()
 
-        # self.mem0_client.update_project(custom_instructions=custom_instructions)
+        self.mem0_client.update_project(custom_instructions=custom_instructions)
         self.batch_size = batch_size
         self.data_path = data_path
         self.data = None
@@ -67,10 +66,8 @@ class MemoryADD:
     def add_memory(self, user_id, message, metadata, retries=3):
         for attempt in range(retries):
             try:
-                # MemOS uses conversation_id, we use timestamp as conversation_id to keep context
-                conversation_id = metadata.get("timestamp", "default_id")
-                _ = self.client.add_message(
-                    messages=message, user_id=user_id, conversation_id=conversation_id
+                _ = self.mem0_client.add(
+                    message, user_id=user_id, version="v2", metadata=metadata, enable_graph=self.is_graph
                 )
                 return
             except Exception as e:
@@ -80,17 +77,10 @@ class MemoryADD:
                 else:
                     raise e
 
-    def add_memories_for_speaker(self, speaker_user_id, speaker_name, messages, timestamp, desc):
-        messages = messages[:2]
+    def add_memories_for_speaker(self, speaker, messages, timestamp, desc):
         for i in tqdm(range(0, len(messages), self.batch_size), desc=desc):
             batch_messages = messages[i : i + self.batch_size]
-            preprocessed_batch = self.preprocessor.preprocess_messages(
-                batch_messages,
-                speaker_display_name=speaker_name,
-                conversation_timestamp=timestamp,
-            )
-            final_batch = preprocessed_batch or batch_messages
-            self.add_memory(speaker_user_id, final_batch, metadata={"timestamp": timestamp})
+            self.add_memory(speaker, batch_messages, metadata={"timestamp": timestamp})
 
     def process_conversation(self, item, idx):
         conversation = item["conversation"]
@@ -101,8 +91,8 @@ class MemoryADD:
         speaker_b_user_id = f"{speaker_b}_{idx}"
 
         # delete all memories for the two users
-        # self.mem0_client.delete_all(user_id=speaker_a_user_id)
-        # self.mem0_client.delete_all(user_id=speaker_b_user_id)
+        self.mem0_client.delete_all(user_id=speaker_a_user_id)
+        self.mem0_client.delete_all(user_id=speaker_b_user_id)
 
         for key in conversation.keys():
             if key in ["speaker_a", "speaker_b"] or "date" in key or "timestamp" in key:
@@ -116,34 +106,22 @@ class MemoryADD:
             messages_reverse = []
             for chat in chats:
                 if chat["speaker"] == speaker_a:
-                    messages.append({"role": "user", "content": f"{speaker_a}: {chat['text']}", "chat_time": timestamp})
-                    messages_reverse.append({"role": "assistant", "content": f"{speaker_a}: {chat['text']}", "chat_time": timestamp})
+                    messages.append({"role": "user", "content": f"{speaker_a}: {chat['text']}"})
+                    messages_reverse.append({"role": "assistant", "content": f"{speaker_a}: {chat['text']}"})
                 elif chat["speaker"] == speaker_b:
-                    messages.append({"role": "assistant", "content": f"{speaker_b}: {chat['text']}", "chat_time": timestamp})
-                    messages_reverse.append({"role": "user", "content": f"{speaker_b}: {chat['text']}", "chat_time": timestamp})
+                    messages.append({"role": "assistant", "content": f"{speaker_b}: {chat['text']}"})
+                    messages_reverse.append({"role": "user", "content": f"{speaker_b}: {chat['text']}"})
                 else:
                     raise ValueError(f"Unknown speaker: {chat['speaker']}")
 
             # add memories for the two users on different threads
             thread_a = threading.Thread(
                 target=self.add_memories_for_speaker,
-                args=(
-                    speaker_a_user_id,
-                    speaker_a,
-                    messages,
-                    timestamp,
-                    "Adding Memories for Speaker A",
-                ),
+                args=(speaker_a_user_id, messages, timestamp, "Adding Memories for Speaker A"),
             )
             thread_b = threading.Thread(
                 target=self.add_memories_for_speaker,
-                args=(
-                    speaker_b_user_id,
-                    speaker_b,
-                    messages_reverse,
-                    timestamp,
-                    "Adding Memories for Speaker B",
-                ),
+                args=(speaker_b_user_id, messages_reverse, timestamp, "Adding Memories for Speaker B"),
             )
 
             thread_a.start()

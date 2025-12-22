@@ -4,8 +4,9 @@ import json
 import threading
 from collections import defaultdict
 
+from metrics.llm_judge import evaluate_llm_judge
 from print_eval import summarize, print_summary
-from metrics.utils import calculate_metrics
+from metrics.utils import calculate_bleu_scores, calculate_metrics
 from tqdm import tqdm
 
 
@@ -24,8 +25,8 @@ def process_item(item_data):
             continue
 
         metrics = calculate_metrics(pred_answer, gt_answer)
-        # bleu_scores = calculate_bleu_scores(pred_answer, gt_answer)
-        # llm_score = evaluate_llm_judge(question, gt_answer, pred_answer)
+        bleu_scores = calculate_bleu_scores(pred_answer, gt_answer)
+        llm_score = evaluate_llm_judge(question, gt_answer, pred_answer)
 
         local_results[k].append(
             {
@@ -33,8 +34,9 @@ def process_item(item_data):
                 "answer": gt_answer,
                 "response": pred_answer,
                 "category": category,
-                # "bleu_score": bleu_scores["bleu1"],
+                "bleu_score": bleu_scores["bleu1"],
                 "f1_score": metrics["f1"],
+                "llm_score": llm_score,
             }
         )
 
@@ -44,7 +46,7 @@ def process_item(item_data):
 def main():
     parser = argparse.ArgumentParser(description="Evaluate RAG results")
     parser.add_argument(
-        "--input_file", type=str, default="results/final_results.json", help="Path to the input dataset file"
+        "--input_file", type=str, default="results/rag_results_500_k1.json", help="Path to the input dataset file"
     )
     parser.add_argument(
         "--output_file", type=str, default="evaluation_metrics.json", help="Path to save the evaluation results"

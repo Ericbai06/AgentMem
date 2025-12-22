@@ -10,16 +10,17 @@ from openai import OpenAI
 from prompts import ANSWER_PROMPT, ANSWER_PROMPT_GRAPH
 from tqdm import tqdm
 
-# from mem0 import MemoryClient
-from memos.api.client import MemOSClient
+from mem0 import MemoryClient
 
 load_dotenv()
 
 
 class MemorySearch:
     def __init__(self, output_path="results.json", top_k=10, filter_memories=False, is_graph=False):
-        self.client = MemOSClient(
-            api_key=os.getenv("MEMOS_API_KEY")
+        self.mem0_client = MemoryClient(
+            api_key=os.getenv("MEM0_API_KEY"),
+            org_id=os.getenv("MEM0_ORGANIZATION_ID"),
+            project_id=os.getenv("MEM0_PROJECT_ID"),
         )
         self.top_k = top_k
         self.openai_client = OpenAI()
@@ -38,13 +39,26 @@ class MemorySearch:
         retries = 0
         while retries < max_retries:
             try:
-                # MemOS requires conversation_id. Using a generic one for search context.
-                conversation_id = "search_context"
-                memories = self.client.search_memory(
-                    query=query,
-                    user_id=user_id,
-                    conversation_id=conversation_id
-                )
+                filters = {"user_id": user_id}
+                if self.is_graph:
+                    print("Searching with graph")
+                    memories = self.mem0_client.search(
+                        query,
+                        user_id=user_id,
+                        top_k=self.top_k,
+                        filter_memories=self.filter_memories,
+                        filters=filters,
+                        enable_graph=True,
+                        output_format="v1.1",
+                    )
+                else:
+                    memories = self.mem0_client.search(
+                        query,
+                        user_id=user_id,
+                        top_k=self.top_k,
+                        filter_memories=self.filter_memories,
+                        filters=filters,
+                    )
                 break
             except Exception as e:
                 print("Retrying...")
@@ -54,67 +68,32 @@ class MemorySearch:
                 time.sleep(retry_delay)
 
         end_time = time.time()
-        
-        semantic_memories = []
+        results = memories.get("results", memories) if isinstance(memories, dict) else memories
 
-        # Helper function to process memory details
-        def process_memory_details(memory_list):
-            processed = []
-            if not memory_list:
-                return processed
-            for detail in memory_list:
-                # Handle object-like detail (from SDK response)
-                if hasattr(detail, 'memory_value'):
-                    processed.append({
-                        "memory": detail.memory_value,
-                        "timestamp": detail.conversation_id, # Using conversation_id as timestamp based on your add.py logic
-                        "score": round(detail.relativity, 2) if hasattr(detail, 'relativity') and detail.relativity is not None else 0.0
-                    })
-                # Handle dict-like detail (if SDK returns dicts)
-                elif isinstance(detail, dict):
-                    processed.append({
-                        "memory": detail.get('memory_value', ''),
-                        "timestamp": detail.get('conversation_id', 'Unknown Time'),
-                        "score": round(detail.get('relativity', 0.0), 2)
-                    })
-            return processed
-
-        # 1. Handle SDK object response (SearchMemoryResponse or similar)
-        if hasattr(memories, 'data'):
-            data_obj = memories.data
-            if hasattr(data_obj, 'memory_detail_list'):
-                semantic_memories.extend(process_memory_details(data_obj.memory_detail_list))
-        
-        # 2. Handle tuple response (e.g. ('data', SearchMemoryData(...)))
-        elif isinstance(memories, tuple):
-            for item in memories:
-                if hasattr(item, 'memory_detail_list'):
-                    semantic_memories.extend(process_memory_details(item.memory_detail_list))
-        
-        # 3. Handle dictionary response (raw JSON)
-        elif isinstance(memories, dict):
-            data = memories.get('data', {})
-            if isinstance(data, dict):
-                memory_list = data.get('memory_detail_list', [])
-                semantic_memories.extend(process_memory_details(memory_list))
-            # Fallback: maybe 'results' key from previous logic
-            elif 'results' in memories:
-                 # ... existing fallback logic if needed, but let's stick to the new spec ...
-                 pass
-
-        # 4. Handle list response (if it returns a list of results directly)
-        elif isinstance(memories, list):
-             # Check if items in list are the data objects
-             for item in memories:
-                 if hasattr(item, 'memory_detail_list'):
-                     semantic_memories.extend(process_memory_details(item.memory_detail_list))
-                 elif isinstance(item, tuple) and len(item) > 1 and hasattr(item[1], 'memory_detail_list'):
-                     semantic_memories.extend(process_memory_details(item[1].memory_detail_list))
-
-        graph_memories = None
-
-        graph_memories = None
-        
+        if not self.is_graph:
+            semantic_memories = [
+                {
+                    "memory": memory["memory"],
+                    "timestamp": memory["metadata"]["timestamp"],
+                    "score": round(memory["score"], 2),
+                }
+                for memory in results
+            ]
+            graph_memories = None
+        else:
+            semantic_memories = [
+                {
+                    "memory": memory["memory"],
+                    "timestamp": memory["metadata"]["timestamp"],
+                    "score": round(memory["score"], 2),
+                }
+                for memory in results
+            ]
+            relations = memories["relations"] if isinstance(memories, dict) else []
+            graph_memories = [
+                {"source": relation["source"], "relationship": relation["relationship"], "target": relation["target"]}
+                for relation in relations
+            ]
         return semantic_memories, graph_memories, end_time - start_time
 
     def answer_question(self, speaker_1_user_id, speaker_2_user_id, question, answer, category):
@@ -204,9 +183,6 @@ class MemorySearch:
     def process_data_file(self, file_path):
         with open(file_path, "r") as f:
             data = json.load(f)
-
-        # Slice data to only process the first 2 items
-        data = data[:2]
 
         for idx, item in tqdm(enumerate(data), total=len(data), desc="Processing conversations"):
             qa = item["qa"]
