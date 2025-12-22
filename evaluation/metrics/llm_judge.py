@@ -5,6 +5,10 @@ from collections import defaultdict
 
 import numpy as np
 from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from mem0.memory.utils import extract_json
 
@@ -46,21 +50,49 @@ Just return the label CORRECT or WRONG in a json format with the key as "label".
 
 def evaluate_llm_judge(question, gold_answer, generated_answer):
     """Evaluate the generated answer against the gold answer using an LLM judge."""
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {
-                "role": "user",
-                "content": ACCURACY_PROMPT.format(
-                    question=question, gold_answer=gold_answer, generated_answer=generated_answer
-                ),
-            }
-        ],
-        response_format={"type": "json_object"},
-        temperature=0.0,
-    )
-    label = json.loads(extract_json(response.choices[0].message.content))["label"]
-    return 1 if label == "CORRECT" else 0
+    try:
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {
+                    "role": "user",
+                    "content": ACCURACY_PROMPT.format(
+                        question=question, gold_answer=gold_answer, generated_answer=generated_answer
+                    ),
+                }
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.0,
+        )
+        content = response.choices[0].message.content
+        
+        # 清理可能导致 JSON 解析失败的控制字符
+        content = content.replace('\n', ' ').replace('\r', '')
+        
+        try:
+            data = json.loads(content)
+        except json.JSONDecodeError:
+            try:
+                # 尝试使用 extract_json 提取
+                cleaned_content = extract_json(response.choices[0].message.content)
+                data = json.loads(cleaned_content)
+            except:
+                # 兜底逻辑：直接匹配关键词
+                if '"label": "CORRECT"' in content or "'label': 'CORRECT'" in content:
+                    return 1
+                elif '"label": "WRONG"' in content or "'label': 'WRONG'" in content:
+                    return 0
+                # 简单的文本匹配
+                if "CORRECT" in content:
+                    return 1
+                return 0
+
+        label = data.get("label", "WRONG")
+        return 1 if label == "CORRECT" else 0
+        
+    except Exception as e:
+        print(f"Error in evaluate_llm_judge: {e}")
+        return 0
 
 
 def main():

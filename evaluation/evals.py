@@ -46,10 +46,10 @@ def process_item(item_data):
 def main():
     parser = argparse.ArgumentParser(description="Evaluate RAG results")
     parser.add_argument(
-        "--input_file", type=str, default="results/results_kimi.json", help="Path to the input dataset file"
+        "--input_file", type=str, default="results/final_results.json", help="Path to the input dataset file"
     )
     parser.add_argument(
-        "--output_file", type=str, default="evaluation_kimi.json", help="Path to save the evaluation results"
+        "--output_file", type=str, default="evaluation_metrics.json", help="Path to save the evaluation results"
     )
     parser.add_argument("--max_workers", type=int, default=10, help="Maximum number of worker threads")
 

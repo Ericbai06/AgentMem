@@ -16,7 +16,7 @@ class Config:
     RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "results")
 
     MAX_WORKERS_INGEST = 10
-    MAX_WORKERS_SEARCH = 5
+    MAX_WORKERS_SEARCH = 2
 
     if not os.path.exists(RESULTS_DIR):
         os.makedirs(RESULTS_DIR)
